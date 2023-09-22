@@ -1,0 +1,20 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/VBS_Cars/.vs
+/VBS_Cars/VBS/bin/Debug/net7.0
+/VBS_Cars/VBS/obj
+/VBS_Cars/VBS.API/bin/Debug/net7.0
+/VBS_Cars/VBS.API/obj
+/VBS_Cars/VBS.DBEngine/bin/Debug/net7.0
+/VBS_Cars/VBS.DBEngine/obj
+/VBS_Cars/VBS.Framework/bin/Debug/net7.0
+/VBS_Cars/VBS.Framework/obj
+/VBS_Cars/VBS.Models/bin/Debug/net7.0
+/VBS_Cars/VBS.Models/obj
+/VBS_Cars/VBS.Repository/bin/Debug/net7.0
+/VBS_Cars/VBS.Repository/obj
+/VBS_Cars/VBS.Service/bin/Debug/net7.0
+/VBS_Cars/VBS.Service/obj
