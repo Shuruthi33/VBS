@@ -22,5 +22,13 @@ namespace VBS.Framework.Helper
             public const string SaveUserDetailsAsync = nameof(SaveUserDetailsAsync);
             public const string DeleteUserDetailsAsync = nameof(DeleteUserDetailsAsync);
         }
+
+        public static class  VehicleDetails
+        {
+            public const string GetVehicleDetailsAsync = nameof(GetVehicleDetailsAsync);
+            public const string GetVehicleDetailsByIdAsync = nameof(GetVehicleDetailsByIdAsync);
+            public const string SaveVehicleDetailsAsync = nameof(SaveVehicleDetailsAsync);
+            public const string DeleteVehicleDetailsAsync = nameof(DeleteVehicleDetailsAsync);
+        }
     }
 }

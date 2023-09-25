@@ -21,7 +21,22 @@ namespace VBS.Repository.Repository
         {
             _SQLDapperHandler = SQLDapperHandler;
         }
+        public async Task<Int16> DeleteUserDetailsAsync(Int64 Id)
+        {
+            Int16 ReturnValue = 0;
+            var parameters = new DynamicParameters();
+            try
+            {
+                parameters.Add(DBParameter.UserDetails.CustomerId, Id, DbType.Int64, ParameterDirection.Input);
 
+                ReturnValue = await _SQLDapperHandler.ExecuteScalarAsync<Int16>(StroredProc.UserDetails.DeleteCustomer, parameters);
+            }
+            catch (Exception ex)
+            {
+                new ErrorLog().WriteLog(ex);
+            }
+            return ReturnValue;
+        }
 
         public async Task<UserDetailsResult> GetUserDetailsAsync()
         {
@@ -79,21 +94,6 @@ namespace VBS.Repository.Repository
             return ReturnValue;
         }
 
-        public async Task<Int16> DeleteUserDetailsAsync(Int64 Id)
-        {
-            Int16 ReturnValue = 0;
-            var parameters = new DynamicParameters();
-            try
-            {
-                parameters.Add(DBParameter.UserDetails.CustomerId, Id, DbType.Int64, ParameterDirection.Input);
-               
-                ReturnValue = await _SQLDapperHandler.ExecuteScalarAsync<Int16>(StroredProc.UserDetails.DeleteCustomer,parameters);
-            }
-            catch (Exception ex)
-            {
-                new ErrorLog().WriteLog(ex);
-            }
-            return ReturnValue;
-        }
+     
     }
 }

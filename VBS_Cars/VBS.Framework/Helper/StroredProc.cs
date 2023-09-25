@@ -16,5 +16,13 @@ namespace VBS.Framework.Helper
             public const string SaveCustomer = "SaveCustomer";
             public const string DeleteCustomer = "DeleteCustomer";
         }
+        public class VehicleDetails
+        {
+            public const string GetVehicleInfo = "GetVehicleInfo";
+            public const string GetVehicleById = "GetVehicleById";
+            public const string SaveVehicles = "SaveVehicles";
+            public const string DeleteVehicle = "DeleteVehicle";
+
+        }
     }
 }

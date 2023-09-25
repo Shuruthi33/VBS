@@ -24,8 +24,46 @@ namespace VBS.Models.Input
         public string? PhoneNo { get; set; }
         public int? RoleId { get; set; }
         public string? ImagePath { get; set; }
+    }
 
-       // public ClaimsIdentity? UserName { get; set; }
+  
+    public class VehicleDetailsDTO
+    {
+        public int VehicleId { get; set; }
+        public string? Make { get; set; }
+        public string? Model { get; set; }
+        public int Year { get; set; }
+        public decimal Price { get; set; }
+        public decimal Mileage { get; set; }
+        public string? LicensePlate { get; set; }
+        public string? Colour { get; set; }
+        public string? VIN { get; set; }
+        public string? EngineType { get; set; }
+        public decimal EngineSize { get; set; }
+        public string? FuelType { get; set; }
+        public decimal FuelTank { get; set; }
+        public int SeatingCapacity { get; set; }
+        public string? Condition { get; set; }
+        public string? Features { get; set; }
+        public string? VersionName { get; set; }
+        public decimal ExShowroomPrice { get; set; }
+        public decimal RTO { get; set; }
+        public decimal Insurance { get; set; }
+        public string? ImageURLs { get; set; }
+        public string? VideoURLs { get; set; }
+        public bool Availability { get; set; }
+    }
+
+    public class BookingDTO
+    {
+        public int CustomerId { get; set; }
+        public int VehicleId { get; set; }
+        public DateTime BookingDate { get; set; }
+        public DateTime PickupDate { get; set; }
+        public DateTime ReturnDate { get; set; }
+        public bool CancelBooking { get; set; }
+        public string? ReturnStatus { get; set; }
+        public bool IsDeleted { get; set; }
     }
 
 }

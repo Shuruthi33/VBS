@@ -45,6 +45,11 @@ namespace VBS.API
             builder.Services.AddTransient<IUserRepository, UserRepository>();
             builder.Services.AddTransient<IUserService, UserService>();
 
+            //Vehicle Service Repository
+            builder.Services.AddTransient<IVehicleRepository, VehicleRepository>();
+            builder.Services.AddTransient<IVehicleService, VehicleService>();
+           
+
 
             var app = builder.Build();
 

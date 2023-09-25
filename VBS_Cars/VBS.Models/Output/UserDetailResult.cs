@@ -23,7 +23,17 @@ namespace VBS.Models.Output
         public string? ToEmail { get; set; }
         public string? Subject { get; set; }
         public string? Body { get; set; }
-        
+   }
+
+	public class VehicleDetailsResult
+	{
+        public int StatusCode { get; set; }
+        public string? JWTToken { get; set; }
+        public object? ResultData { get; set; }
+        public string StatusMessage { get; set; } = string.Empty;
+
+        public VehicleDetailsDTO? VehicleDetails { get; set; }
+        public List<VehicleDetailsDTO>? VehicleDetailsList { get; set; }
     }
 
 
