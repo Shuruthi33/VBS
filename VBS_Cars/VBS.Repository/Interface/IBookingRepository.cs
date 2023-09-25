@@ -10,9 +10,9 @@ namespace VBS.Repository.Interface
 {
     public interface IBookingRepository
     {
-        Task<UserDetailsResult> GetUserDetailsAsync();
-        Task<UserDetailsDTO> GetUserDetailsByIdAsync(int Id);
-        Task<int> SaveUserDetailsAsync(UserDetailsDTO userDetailsDTO);
-        Task<Int16> DeleteUserDetailsAsync(Int64 Id);
+        Task<BookingDetailsResult> GetBookingDetailsAsync();
+        Task<BookingDTO> GetBookingDetailsByIdAsync(int Id);
+        Task<int> SaveBookingDetailsAsync(BookingDTO bookingDTO);
+        Task<Int16> DeleteBookingDetailsAsync(Int64 Id);
     }
 }

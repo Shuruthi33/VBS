@@ -29,7 +29,7 @@ namespace VBS.Repository.Repository
             {
                 parameters.Add(DBParameter.BookingDetails.BookingId, Id, DbType.Int64, ParameterDirection.Input);
 
-                ReturnValue = await _SQLDapperHandler.ExecuteScalarAsync<Int16>(StroredProc.UserDetails.DeleteCustomer, parameters);
+                ReturnValue = await _SQLDapperHandler.ExecuteScalarAsync<Int16>(StroredProc.BookingDetails.DeleteBooking, parameters);
             }
             catch (Exception ex)
             {
@@ -45,7 +45,7 @@ namespace VBS.Repository.Repository
             {
                 var parameters = new DynamicParameters();
                 parameters.Add(DBParameter.BookingDetails.BookingId, 0, DbType.Int32, ParameterDirection.Input);
-                bookingDetailsResult.BookingDetailsList = (await _SQLDapperHandler.QueryAsync<BookingDTO>(StroredProc.UserDetails.GetCustomerInfo)).ToList();
+                bookingDetailsResult.BookingDetailsList = (await _SQLDapperHandler.QueryAsync<BookingDTO>(StroredProc.BookingDetails.GetBookingInfo)).ToList();
             }
             catch (Exception ex)
             {
@@ -61,7 +61,7 @@ namespace VBS.Repository.Repository
             {
                 var parameters = new DynamicParameters();
                 parameters.Add(DBParameter.BookingDetails.BookingId, Id, DbType.Int32, ParameterDirection.Input);
-                bookingDTO = (await _SQLDapperHandler.QueryFirstOrDefaultAsync<BookingDTO>(StroredProc.UserDetails.GetCustomerById, parameters));
+                bookingDTO = (await _SQLDapperHandler.QueryFirstOrDefaultAsync<BookingDTO>(StroredProc.BookingDetails.GetBookingById, parameters));
             }
             catch (Exception ex)
             {
@@ -85,7 +85,7 @@ namespace VBS.Repository.Repository
                 parameters.Add(DBParameter.BookingDetails.CancelBooking, bookingDTO.CancelBooking, DbType.Boolean, ParameterDirection.Input);
                 parameters.Add(DBParameter.BookingDetails.ReturnStatus, bookingDTO.ReturnStatus, DbType.String, ParameterDirection.Input);
 
-                ReturnValue = await _SQLDapperHandler.ExecuteScalarAsync<int>(StroredProc.UserDetails.SaveCustomer, parameters);
+                ReturnValue = await _SQLDapperHandler.ExecuteScalarAsync<int>(StroredProc.BookingDetails.SaveBooking, parameters);
             }
             catch (Exception ex)
             {

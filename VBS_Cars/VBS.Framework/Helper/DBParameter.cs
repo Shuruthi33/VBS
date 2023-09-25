@@ -46,5 +46,27 @@ namespace VBS.Framework.Helper
             public const string VideoURLs = nameof(VideoURLs);
             public const string Availability = nameof(Availability);
         }
+
+        public static class BookingDetails
+        {
+            public const string BookingId = nameof(BookingId);
+            public const string CustomerId = nameof(CustomerId);
+            public const string VehicleId = nameof(VehicleId);
+            public const string BookingDate = nameof(BookingDate);
+            public const string PickupDate = nameof(PickupDate);
+            public const string ReturnDate = nameof(ReturnDate);
+            public const string CancelBooking = nameof(CancelBooking);
+            public const string ReturnStatus = nameof(ReturnStatus);
+        }
+
+
+        public static class FeedbackDetails
+        {
+            public const string FeedbackId = nameof(FeedbackId);
+            public const string BookingId = nameof(BookingId);
+            public const string Rating = nameof(Rating);
+            public const string Comment = nameof(Comment);
+
+        }
     }
 }

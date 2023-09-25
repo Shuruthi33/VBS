@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VBS.Framework.Helper;
 using VBS.Models.Input;
@@ -6,8 +8,14 @@ using VBS.Service.Interface;
 
 namespace VBS.API.Areas.Adminstration.Controllers
 {
-    [Route("api/[controller]/[Action]")]
+    //[Route("api/[controller]/[Action]")]
+    //[ApiController]
+
+    [Produces(AuthAPIController.InputType.ApplicationJson)]
     [ApiController]
+    [Route(AuthAPIController.Property.APIController)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
     public class UserController : ControllerBase
     {
         public readonly IUserService _userDetailsService;

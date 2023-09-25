@@ -24,5 +24,21 @@ namespace VBS.Framework.Helper
             public const string DeleteVehicle = "DeleteVehicle";
 
         }
+        public class BookingDetails
+        {
+            public const string GetBookingInfo = "GetBookingInfo";
+            public const string GetBookingById = "GetBookingById";
+            public const string SaveBooking = "SaveBooking";
+            public const string DeleteBooking = "DeleteBooking";
+
+        }
+        public class FeedbackDetails
+        {
+            public const string GetFeedback = "GetFeedback";
+            public const string GetFeedbackById = "GetFeedbackById";
+            public const string SaveFeedback = "SaveFeedback";
+            public const string DeleteFeedback = "DeleteFeedback";
+
+        }
     }
 }

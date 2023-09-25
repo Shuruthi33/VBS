@@ -56,6 +56,7 @@ namespace VBS.Models.Input
 
     public class BookingDTO
     {
+        public int BookingId { get; set; }
         public int CustomerId { get; set; }
         public int VehicleId { get; set; }
         public DateTime BookingDate { get; set; }
@@ -65,5 +66,15 @@ namespace VBS.Models.Input
         public string? ReturnStatus { get; set; }
         public bool IsDeleted { get; set; }
     }
+
+    public class FeedbackDTO
+    {
+        public int FeedbackId { get; set; }
+        public int BookingId { get; set; }
+        public int Rating { get; set; }
+        public string? Comment { get; set; }
+  
+    }
+
 
 }

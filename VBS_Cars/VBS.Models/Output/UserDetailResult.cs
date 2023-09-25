@@ -36,7 +36,26 @@ namespace VBS.Models.Output
         public List<VehicleDetailsDTO>? VehicleDetailsList { get; set; }
     }
 
+    public class BookingDetailsResult
+    {
+        public int StatusCode { get; set; }
+        public string? JWTToken { get; set; }
+        public object? ResultData { get; set; }
+        public string StatusMessage { get; set; } = string.Empty;
 
+        public BookingDTO? BookingDetails { get; set; }
+        public List<BookingDTO>? BookingDetailsList { get; set; }
+    }
 
+    public class FeedbackDetailsResult
+    {
+        public int StatusCode { get; set; }
+        public string? JWTToken { get; set; }
+        public object? ResultData { get; set; }
+        public string StatusMessage { get; set; } = string.Empty;
+
+        public FeedbackDTO? FeedbackDetails { get; set; }
+        public List<FeedbackDTO>? FeedbackDetailsList { get; set; }
+    }
 
 }

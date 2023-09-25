@@ -13,11 +13,11 @@ namespace VBS.Service.Service
 {
     public class BookingService : IBookingService
     {
-        private IUserRepository _userDetailsRepository;
+        private IBookingRepository _bookingRepository;
 
-        public BookingService(IUserRepository userDetailsRepository)
+        public BookingService(IBookingRepository BookingRepository)
         {
-            _userDetailsRepository = userDetailsRepository;
+            _bookingRepository = BookingRepository;
         }
         public async Task<ResultDataArgs> DeleteBookingDetailsAsync(Int64 Id)
         {
@@ -25,8 +25,8 @@ namespace VBS.Service.Service
             try
             {
 
-                var objUserDetail = await _userDetailsRepository.DeleteBookingDetailsAsync(Id);
-                RresultArgs.MessageTitle = MessageCatalog.MessageTitle.UserDetails;
+                var objUserDetail = await _bookingRepository.DeleteBookingDetailsAsync(Id);
+                RresultArgs.MessageTitle = MessageCatalog.MessageTitle.BookingDetails;
 
                 if (RresultArgs.StatusCode == 200)
                 {
@@ -52,7 +52,7 @@ namespace VBS.Service.Service
             ResultDataArgs ResultDataArgs = new ResultDataArgs();
             try
             {
-                var objUserDetail = await _userDetailsRepository.GetBookingDetailsAsync();
+                var objUserDetail = await _bookingRepository.GetBookingDetailsAsync();
 
                 ResultDataArgs.MessageTitle = MessageCatalog.MessageTitle.UserDetails;
 
@@ -60,7 +60,7 @@ namespace VBS.Service.Service
                 {
                     ResultDataArgs.StatusCode = MessageCatalog.ErrorCodes.Success;
                     ResultDataArgs.StatusMessage = MessageCatalog.ErrorMessages.Success;
-                    ResultDataArgs.ResultData = objUserDetail.UserDetailsList;
+                    ResultDataArgs.ResultData = objUserDetail.BookingDetailsList;
                 }
                 else
                 {
@@ -80,7 +80,7 @@ namespace VBS.Service.Service
             ResultDataArgs ResultDataArgs = new ResultDataArgs();
             try
             {
-                var objUserDetail = await _userDetailsRepository.GetBookingDetailsByIdAsync(Id);
+                var objUserDetail = await _bookingRepository.GetBookingDetailsByIdAsync(Id);
                 if (objUserDetail != null)
                 {
                     ResultDataArgs.StatusCode = MessageCatalog.ErrorCodes.Success;
@@ -100,13 +100,12 @@ namespace VBS.Service.Service
             return ResultDataArgs;
         }
 
-        public async Task<ResultDataArgs> SaveBookingDetailsAsync(UserDetailsDTO userDetailsDTO)
+        public async Task<ResultDataArgs> SaveBookingDetailsAsync(BookingDTO bookingDTO)
         {
-
             ResultDataArgs ResultDataArgs = new ResultDataArgs();
             try
             {
-                int objUserDetail = await _userDetailsRepository.SaveBookingDetailsAsync(userDetailsDTO);
+                int objUserDetail = await _bookingRepository.SaveBookingDetailsAsync(bookingDTO);
                 if (objUserDetail == 200)
                 {
                     ResultDataArgs.StatusCode = MessageCatalog.ErrorCodes.Success;
@@ -125,6 +124,5 @@ namespace VBS.Service.Service
             }
             return ResultDataArgs;
         }
-    
-}
+    }
 }
