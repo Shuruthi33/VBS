@@ -39,8 +39,9 @@ namespace VBS.Service.Service
 
 
                 objUserDetail = await _authRepository.AuthenticateUserAsync(user);
-				if (objUserDetail.UserDetails != null)
+				if (objUserDetail != null && objUserDetail.StatusCode==200 && objUserDetail.UserDetails != null)
 				{
+
 					if (HashEncryption.VerifyPassword(objUserDetail.UserDetails.Password, user.Password))
                     {
 						ResultArgs.StatusCode = MessageCatalog.ErrorCodes.Success;
@@ -54,7 +55,6 @@ namespace VBS.Service.Service
 						ResultArgs.StatusCode = MessageCatalog.ErrorCodes.NoRecordFound;
 						ResultArgs.StatusMessage = MessageCatalog.ErrorMessages.PasswordIncorrect;
 
-                        ResultArgs.UserDetails = objUserDetail.UserDetails;
                     }
 				}
 				else

@@ -11,7 +11,7 @@ namespace VBS.Repository.Interface
     public interface IBookingRepository
     {
         Task<BookingDetailsResult> GetBookingDetailsAsync();
-        Task<BookingDTO> GetBookingDetailsByIdAsync(int Id);
+        Task<BookingDetailsResponseDTO> GetBookingDetailsByIdAsync(int Id);
         Task<int> SaveBookingDetailsAsync(BookingDTO bookingDTO);
         Task<Int16> DeleteBookingDetailsAsync(Int64 Id);
     }

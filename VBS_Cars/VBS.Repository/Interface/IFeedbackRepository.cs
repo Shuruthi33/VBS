@@ -11,7 +11,7 @@ namespace VBS.Repository.Interface
     public interface IFeedbackRepository
     {
         Task<FeedbackDetailsResult> GetFeedbackDetailsAsync();
-        Task<FeedbackDTO> GetFeedbackDetailsByIdAsync(int Id);
+        Task<FeedbackResponseDTO> GetFeedbackDetailsByIdAsync(int Id);
         Task<int> SaveFeedbackDetailsAsync(FeedbackDTO feedbackDTO);
         Task<Int16> DeleteFeedbackDetailsAsync(Int64 Id);
     }

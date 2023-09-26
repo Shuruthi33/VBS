@@ -1,4 +1,10 @@
 
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.Text;
 using VBS.DBEngine;
 using VBS.Repository.Interface;
 using VBS.Repository.Repository;
@@ -28,8 +34,50 @@ namespace VBS.API
             });
 
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
 
+                    In = ParameterLocation.Header,
+                    Description = "Insert Token",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    BearerFormat = "Jwt",
+                    Scheme = "Bearer"
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+                    {
+                        new OpenApiSecurityScheme{
+                        Reference = new OpenApiReference{
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                        },
+                        new String[]{ }
+                    }
+
+                });
+            }
+                );
+            var Key = Encoding.ASCII.GetBytes("vehiclebsffffffffffffff");
+            builder.Services.AddAuthentication(au =>
+            {
+                au.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                au.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(jwt =>
+            {
+                jwt.RequireHttpsMetadata = false;
+                jwt.SaveToken = true;
+                jwt.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
@@ -57,7 +105,8 @@ namespace VBS.API
             builder.Services.AddTransient<IFeedbackRepository, FeedbackRepository>();
             builder.Services.AddTransient<IFeedbackService, FeedbackService>();
 
-
+           
+          
 
             var app = builder.Build();
 
@@ -69,6 +118,9 @@ namespace VBS.API
             }
 
             app.UseHttpsRedirection();
+              
+            app.UseAuthentication();
+
 
             app.UseAuthorization();
 

@@ -28,7 +28,7 @@ namespace VBS.Service.Service
                 var objUserDetail = await _bookingRepository.DeleteBookingDetailsAsync(Id);
                 RresultArgs.MessageTitle = MessageCatalog.MessageTitle.BookingDetails;
 
-                if (RresultArgs.StatusCode == 200)
+                if (RresultArgs.StatusCode == 0)
                 {
                     RresultArgs.StatusCode = MessageCatalog.ErrorCodes.Success;
                     RresultArgs.StatusMessage = MessageCatalog.ErrorMessages.DeleteSuccess;

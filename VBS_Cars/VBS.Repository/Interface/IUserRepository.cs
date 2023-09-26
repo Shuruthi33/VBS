@@ -11,7 +11,7 @@ namespace VBS.Repository.Interface
     public interface IUserRepository
     {
         Task<UserDetailsResult> GetUserDetailsAsync();
-        Task<UserDetailsDTO> GetUserDetailsByIdAsync(int Id);
+        Task<UserDetailsResponseDTO> GetUserDetailsByIdAsync(int Id);
         Task<int> SaveUserDetailsAsync(UserDetailsDTO userDetailsDTO);
         Task<Int16> DeleteUserDetailsAsync(Int64 Id);
 

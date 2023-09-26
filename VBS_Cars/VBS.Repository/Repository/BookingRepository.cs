@@ -45,7 +45,7 @@ namespace VBS.Repository.Repository
             {
                 var parameters = new DynamicParameters();
                 parameters.Add(DBParameter.BookingDetails.BookingId, 0, DbType.Int32, ParameterDirection.Input);
-                bookingDetailsResult.BookingDetailsList = (await _SQLDapperHandler.QueryAsync<BookingDTO>(StroredProc.BookingDetails.GetBookingInfo)).ToList();
+                bookingDetailsResult.BookingDetailsList = (await _SQLDapperHandler.QueryAsync<BookingDetailsResponseDTO>(StroredProc.BookingDetails.GetBookingInfo)).ToList();
             }
             catch (Exception ex)
             {
@@ -54,14 +54,14 @@ namespace VBS.Repository.Repository
             return bookingDetailsResult;
         }
 
-        public async Task<BookingDTO> GetBookingDetailsByIdAsync(int Id)
+        public async Task<BookingDetailsResponseDTO> GetBookingDetailsByIdAsync(int Id)
         {
-            BookingDTO bookingDTO = new BookingDTO();
+            BookingDetailsResponseDTO bookingDTO = new BookingDetailsResponseDTO();
             try
             {
                 var parameters = new DynamicParameters();
                 parameters.Add(DBParameter.BookingDetails.BookingId, Id, DbType.Int32, ParameterDirection.Input);
-                bookingDTO = (await _SQLDapperHandler.QueryFirstOrDefaultAsync<BookingDTO>(StroredProc.BookingDetails.GetBookingById, parameters));
+                bookingDTO = (await _SQLDapperHandler.QueryFirstOrDefaultAsync<BookingDetailsResponseDTO>(StroredProc.BookingDetails.GetBookingById, parameters));
             }
             catch (Exception ex)
             {
@@ -81,8 +81,8 @@ namespace VBS.Repository.Repository
                 parameters.Add(DBParameter.BookingDetails.VehicleId, bookingDTO.VehicleId, DbType.Int16, ParameterDirection.Input);
                 parameters.Add(DBParameter.BookingDetails.BookingDate, bookingDTO.BookingDate, DbType.DateTime, ParameterDirection.Input);
                 parameters.Add(DBParameter.BookingDetails.PickupDate, bookingDTO.PickupDate, DbType.DateTime, ParameterDirection.Input);
-                parameters.Add(DBParameter.BookingDetails.ReturnDate, bookingDTO.ReturnDate, DbType.Date, ParameterDirection.Input);
-                parameters.Add(DBParameter.BookingDetails.CancelBooking, bookingDTO.CancelBooking, DbType.Boolean, ParameterDirection.Input);
+                parameters.Add(DBParameter.BookingDetails.ReturnDate, bookingDTO.ReturnDate, DbType.DateTime, ParameterDirection.Input);
+                parameters.Add(DBParameter.BookingDetails.CancelBooking, bookingDTO.CancelBooking, DbType.String, ParameterDirection.Input);
                 parameters.Add(DBParameter.BookingDetails.ReturnStatus, bookingDTO.ReturnStatus, DbType.String, ParameterDirection.Input);
 
                 ReturnValue = await _SQLDapperHandler.ExecuteScalarAsync<int>(StroredProc.BookingDetails.SaveBooking, parameters);

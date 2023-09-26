@@ -7,55 +7,29 @@ using VBS.Models.Input;
 
 namespace VBS.Models.Output
 {
-	public class UserDetailsResult
-	{
-		public int StatusCode { get; set; }
-		public string? JWTToken { get; set; }
-		public object? ResultData { get; set; }
-		public string StatusMessage { get; set; } = string.Empty;
-
-		public UserDetailsDTO? UserDetails { get; set; }
-		public List<UserDetailsDTO>? UserDetailsList { get; set; }
-		
-	}
-    public class EmailDetailsResult
+    public class UserDetailsResult
     {
-        public string? ToEmail { get; set; }
-        public string? Subject { get; set; }
-        public string? Body { get; set; }
-   }
-
-	public class VehicleDetailsResult
-	{
         public int StatusCode { get; set; }
-        public string? JWTToken { get; set; }
+       
         public object? ResultData { get; set; }
         public string StatusMessage { get; set; } = string.Empty;
 
-        public VehicleDetailsDTO? VehicleDetails { get; set; }
-        public List<VehicleDetailsDTO>? VehicleDetailsList { get; set; }
+        public UserDetailsDTO? UserDetails { get; set; }
+        public List<UserDetailsResponseDTO>? UserDetailsList { get; set; }
+
     }
 
-    public class BookingDetailsResult
+    public class UserDetailsResponseDTO
     {
-        public int StatusCode { get; set; }
-        public string? JWTToken { get; set; }
-        public object? ResultData { get; set; }
-        public string StatusMessage { get; set; } = string.Empty;
-
-        public BookingDTO? BookingDetails { get; set; }
-        public List<BookingDTO>? BookingDetailsList { get; set; }
+        public int? CustomerId { get; set; }
+        public string? CustomerName { get; set; }
+        public string? Email { get; set; }
+        public string? Address { get; set; }
+        public string? PhoneNo { get; set; }
+        public string? RoleName { get; set; }
+        public string? ImagePath { get; set; }
     }
+  
 
-    public class FeedbackDetailsResult
-    {
-        public int StatusCode { get; set; }
-        public string? JWTToken { get; set; }
-        public object? ResultData { get; set; }
-        public string StatusMessage { get; set; } = string.Empty;
-
-        public FeedbackDTO? FeedbackDetails { get; set; }
-        public List<FeedbackDTO>? FeedbackDetailsList { get; set; }
-    }
 
 }

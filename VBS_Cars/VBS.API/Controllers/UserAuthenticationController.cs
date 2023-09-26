@@ -54,6 +54,7 @@ namespace VBS.API.Controllers
             public async Task<IActionResult> AuthenticateAsync([FromBody] UserCredential user)
             {
                 var Response = new UserDetailsResult();
+           
                 try
                 {
                     Response = await _user.AuthenticateUserAsync(user);
@@ -75,13 +76,15 @@ namespace VBS.API.Controllers
                     };
                     var token = tokenhandler.CreateToken(tokenDescriptor);
                     string finaltoken = tokenhandler.WriteToken(token);
-                    Response.JWTToken = finaltoken;
-                }
+                // Response.JWTToken = finaltoken;
+                Response.UserDetails.JWTToken = finaltoken;
+            }
                 catch (Exception ex)
                 {
                     new ErrorLog().WriteLog(ex);
                     return Unauthorized();
                 }
+           
                 return Ok(Response);
             }
 

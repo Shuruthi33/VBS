@@ -8,9 +8,6 @@ using VBS.Service.Interface;
 
 namespace VBS.API.Areas.Adminstration.Controllers
 {
-    //[Route("api/[controller]")]
-    //[ApiController]
-
     [Produces(AuthAPIController.InputType.ApplicationJson)]
     [ApiController]
     [Route(AuthAPIController.Property.APIController)]
@@ -24,34 +21,34 @@ namespace VBS.API.Areas.Adminstration.Controllers
             _feedbackService = feedbackService;
         }
         [HttpGet]
-        [ActionName(APIActionName.UserDetail.GetUserDetailsAsync)]
-        public async Task<IActionResult> GetUserDetailsAsync()
+        [ActionName(APIActionName.FeedbackDetails.GetFeedbackDetailsAsync)]
+        public async Task<IActionResult> GetFeedbackDetailsAsync()
         {
-            return Ok(await _userDetailsService.GetUserDetailsAsync());
+            return Ok(await _feedbackService.GetFeedbackDetailsAsync());
         }
 
         [HttpGet]
-        [ActionName(APIActionName.UserDetail.GetUserDetailsByIdAsync)]
-        public async Task<IActionResult> GetUserDetailsByIdAsync(int id)
+        [ActionName(APIActionName.FeedbackDetails.GetFeedbackDetailsByIdAsync)]
+        public async Task<IActionResult> GetFeedbackDetailsByIdAsync(int id)
         {
-            return Ok(await _userDetailsService.GetUserDetailsByIdAsync(id));
+            return Ok(await _feedbackService.GetFeedbackDetailsByIdAsync(id));
         }
 
 
 
         [HttpPost]
-        [ActionName(APIActionName.UserDetail.SaveUserDetailsAsync)]
-        public async Task<IActionResult> AddUserDetailsAsync([FromBody] UserDetailsDTO userDetails)
+        [ActionName(APIActionName.FeedbackDetails.SaveFeedbackDetailsAsync)]
+        public async Task<IActionResult> SaveFeedbackDetailsAsync([FromBody] FeedbackDTO _feedbackDTO)
         {
-            return Ok(await _userDetailsService.SaveUserDetailsAsync(userDetails));
+            return Ok(await _feedbackService.SaveFeedbackDetailsAsync(_feedbackDTO));
         }
 
 
         [HttpDelete]
-        [ActionName(APIActionName.UserDetail.DeleteUserDetailsAsync)]
-        public async Task<IActionResult> DeleteUserDetailsAsync(Int64 Id)
+        [ActionName(APIActionName.FeedbackDetails.DeleteFeedbackDetailsAsync)]
+        public async Task<IActionResult> DeleteFeedbackDetailsAsync(Int64 Id)
         {
-            return Ok(await _userDetailsService.DeleteUserDetailsAsync(Id));
+            return Ok(await _feedbackService.DeleteFeedbackDetailsAsync(Id));
         }
     }
 }

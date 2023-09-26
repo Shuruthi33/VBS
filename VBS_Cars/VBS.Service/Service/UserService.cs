@@ -29,7 +29,7 @@ namespace VBS.Service.Service
                 var objUserDetail = await _userDetailsRepository.DeleteUserDetailsAsync(Id);
                 RresultArgs.MessageTitle= MessageCatalog.MessageTitle.UserDetails;
 
-                if (RresultArgs.StatusCode == 200)
+                if (RresultArgs.StatusCode == 0)
                 {
                     RresultArgs.StatusCode = MessageCatalog.ErrorCodes.Success;
                     RresultArgs.StatusMessage = MessageCatalog.ErrorMessages.DeleteSuccess;

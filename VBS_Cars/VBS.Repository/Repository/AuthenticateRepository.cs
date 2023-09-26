@@ -40,7 +40,6 @@ namespace VBS.Repository.Repository
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@CustomerName", user.CustomerName, DbType.String, ParameterDirection.Input);
-                parameters.Add("@Password", user.Password, DbType.String, ParameterDirection.Input);
                 var multipleResults = await _SQLDapperHandler.QueryMultipleAsync("LoginProcess", parameters);
                 if (multipleResults != null)
                 {

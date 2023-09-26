@@ -45,7 +45,7 @@ namespace VBS.Repository.Repository
             {
                 var parameters = new DynamicParameters();
                 parameters.Add(DBParameter.UserDetails.CustomerId, 0, DbType.Int32, ParameterDirection.Input);
-                userDetailResults.UserDetailsList = (await _SQLDapperHandler.QueryAsync<UserDetailsDTO>(StroredProc.UserDetails.GetCustomerInfo)).ToList();
+                userDetailResults.UserDetailsList = (await _SQLDapperHandler.QueryAsync<UserDetailsResponseDTO>(StroredProc.UserDetails.GetCustomerInfo)).ToList();
             }
             catch (Exception ex)
             {
@@ -54,14 +54,14 @@ namespace VBS.Repository.Repository
             return userDetailResults;
         }
 
-        public async Task<UserDetailsDTO> GetUserDetailsByIdAsync(int Id)
+        public async Task<UserDetailsResponseDTO> GetUserDetailsByIdAsync(int Id)
         {
-            UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
+            UserDetailsResponseDTO userDetailsDTO = new UserDetailsResponseDTO();
             try
             {
                 var parameters = new DynamicParameters();
                 parameters.Add(DBParameter.UserDetails.CustomerId, Id, DbType.Int32, ParameterDirection.Input);
-                userDetailsDTO = (await _SQLDapperHandler.QueryFirstOrDefaultAsync<UserDetailsDTO>(StroredProc.UserDetails.GetCustomerById, parameters));
+                userDetailsDTO = (await _SQLDapperHandler.QueryFirstOrDefaultAsync<UserDetailsResponseDTO>(StroredProc.UserDetails.GetCustomerById, parameters));
             }
             catch (Exception ex)
             {

@@ -13,6 +13,8 @@ namespace VBS.Framework.Helper
             public const string UserDetails = "User Details";
             public const string UserRole = "User Role";
             public const string BookingDetails = "Booking Details";
+            public const string FeedbackDetails = "Feedback Details";
+
 
         }
             public static class ErrorCodes

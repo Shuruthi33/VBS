@@ -8,13 +8,13 @@ using VBS.Service.Interface;
 
 namespace VBS.API.Areas.Adminstration.Controllers
 {
-    //[Route("api/[controller]/[action]")]
-    //[ApiController]
+  
+ 
 
-    [Produces(AuthAPIController.InputType.ApplicationJson)]
-    [ApiController]
-    [Route(AuthAPIController.Property.APIController)]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+   [Produces(AuthAPIController.InputType.ApplicationJson)]
+   [ApiController]
+   [Route(AuthAPIController.Property.APIController)]
+   [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class BookingController : ControllerBase
     {
         public readonly IBookingService _bookingService;

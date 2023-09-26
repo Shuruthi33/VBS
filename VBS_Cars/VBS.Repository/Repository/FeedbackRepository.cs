@@ -45,7 +45,7 @@ namespace VBS.Repository.Repository
             {
                 var parameters = new DynamicParameters();
                 parameters.Add(DBParameter.FeedbackDetails.FeedbackId, 0, DbType.Int32, ParameterDirection.Input);
-                feedbackDetailsResult.FeedbackDetailsList = (await _SQLDapperHandler.QueryAsync<FeedbackDTO>(StroredProc.FeedbackDetails.GetFeedback)).ToList();
+                feedbackDetailsResult.FeedbackDetailsList = (await _SQLDapperHandler.QueryAsync<FeedbackResponseDTO>(StroredProc.FeedbackDetails.GetFeedback)).ToList();
             }
             catch (Exception ex)
             {
@@ -54,14 +54,14 @@ namespace VBS.Repository.Repository
             return feedbackDetailsResult;
         }
 
-        public async Task<FeedbackDTO> GetFeedbackDetailsByIdAsync(int Id)
+        public async Task<FeedbackResponseDTO> GetFeedbackDetailsByIdAsync(int Id)
         {
-            FeedbackDTO feedbackDTO = new FeedbackDTO();
+            FeedbackResponseDTO feedbackDTO = new FeedbackResponseDTO();
             try
             {
                 var parameters = new DynamicParameters();
                 parameters.Add(DBParameter.FeedbackDetails.FeedbackId, Id, DbType.Int32, ParameterDirection.Input);
-                feedbackDTO = (await _SQLDapperHandler.QueryFirstOrDefaultAsync<FeedbackDTO>(StroredProc.FeedbackDetails.GetFeedbackById, parameters));
+                feedbackDTO = (await _SQLDapperHandler.QueryFirstOrDefaultAsync<FeedbackResponseDTO>(StroredProc.FeedbackDetails.GetFeedbackById, parameters));
             }
             catch (Exception ex)
             {
