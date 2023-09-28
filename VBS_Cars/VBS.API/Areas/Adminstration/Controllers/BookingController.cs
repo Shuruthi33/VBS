@@ -23,14 +23,21 @@ namespace VBS.API.Areas.Adminstration.Controllers
         {
             _bookingService = bookingService;
         }
-
+        /// <summary>
+        /// Get the Booking Details
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [ActionName(APIActionName.BookingDetails.GetBookingDetailsAsync)]
         public async Task<IActionResult> GetBookingDetailsAsync()
         {
             return Ok(await _bookingService.GetBookingDetailsAsync());
         }
-
+        /// <summary>
+        /// Get the booking Details ById 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         [ActionName(APIActionName.BookingDetails.GetBookingDetailsByIdAsync)]
         public async Task<IActionResult> GetBookingDetailsByIdAsync(int id)
@@ -38,7 +45,11 @@ namespace VBS.API.Areas.Adminstration.Controllers
             return Ok(await _bookingService.GetBookingDetailsByIdAsync(id));
         }
 
-
+        /// <summary>
+        /// Insert the Booking Details
+        /// </summary>
+        /// <param name="bookingDTO"></param>
+        /// <returns></returns>
 
         [HttpPost]
         [ActionName(APIActionName.BookingDetails.SaveBookingDetailsAsync)]
@@ -47,7 +58,11 @@ namespace VBS.API.Areas.Adminstration.Controllers
             return Ok(await _bookingService.SaveBookingDetailsAsync(bookingDTO));
         }
 
-
+        /// <summary>
+        /// Delete the Booking Details
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpDelete]
         [ActionName(APIActionName.BookingDetails.DeleteBookingDetailsAsync)]
         public async Task<IActionResult> DeleteBookingDetailsAsync(Int64 Id)

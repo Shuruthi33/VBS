@@ -20,12 +20,21 @@ namespace VBS.API.Areas.Adminstration.Controllers
         {
             _vehicleService = vehicleService;
         }
+        /// <summary>
+        /// View the VehicleDetails
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [ActionName(APIActionName.VehicleDetails.GetVehicleDetailsAsync)]
         public async Task<IActionResult> GetVehicleDetailsAsync()
         {
             return Ok(await _vehicleService.GetVehicleDetailsAsync());
         }
+        /// <summary>
+        /// View the VehicleDetails
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
         [HttpGet]
         [ActionName(APIActionName.VehicleDetails.GetVehicleDetailsByIdAsync)]
@@ -35,7 +44,11 @@ namespace VBS.API.Areas.Adminstration.Controllers
         }
 
 
-
+        /// <summary>
+        /// Delete the Vehicle Details
+        /// </summary>
+        /// <param name="vehicleDetails"></param>
+        /// <returns></returns>
         [HttpPost]
         [ActionName(APIActionName.VehicleDetails.SaveVehicleDetailsAsync)]
         public async Task<IActionResult> SaveVehicleDetailsAsync([FromBody] VehicleDetailsDTO vehicleDetails)
@@ -43,7 +56,11 @@ namespace VBS.API.Areas.Adminstration.Controllers
             return Ok(await _vehicleService.SaveVehicleDetailsAsync(vehicleDetails));
         }
 
-
+        /// <summary>
+        /// Delete the Vehile Details
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpDelete]
         [ActionName(APIActionName.VehicleDetails.DeleteVehicleDetailsAsync)]
         public async Task<IActionResult> DeleteVehicleDetailsAsync(Int64 Id)

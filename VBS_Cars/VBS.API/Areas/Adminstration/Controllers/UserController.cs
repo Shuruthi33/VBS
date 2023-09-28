@@ -22,13 +22,21 @@ namespace VBS.API.Areas.Adminstration.Controllers
         {
             _userDetailsService = userDetailsService;
         }
+        /// <summary>
+        /// view the UserDetails
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [ActionName(APIActionName.UserDetail.GetUserDetailsAsync)]
         public async Task<IActionResult> GetUserDetailsAsync()
         {
             return Ok(await _userDetailsService.GetUserDetailsAsync());
         }
-
+        /// <summary>
+        /// get the UserDetailsById
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         [ActionName(APIActionName.UserDetail.GetUserDetailsByIdAsync)]
         public async Task<IActionResult> GetUserDetailsByIdAsync(int id)
@@ -36,7 +44,11 @@ namespace VBS.API.Areas.Adminstration.Controllers
             return Ok(await _userDetailsService.GetUserDetailsByIdAsync(id));
         }
 
-       
+       /// <summary>
+       /// Insert the UserDetails
+       /// </summary>
+       /// <param name="userDetails"></param>
+       /// <returns></returns>
 
         [HttpPost]
         [ActionName(APIActionName.UserDetail.SaveUserDetailsAsync)]
@@ -45,7 +57,11 @@ namespace VBS.API.Areas.Adminstration.Controllers
             return Ok(await _userDetailsService.SaveUserDetailsAsync(userDetails));
         }
 
-
+        /// <summary>
+        /// Delete the User Details
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpDelete]
         [ActionName(APIActionName.UserDetail.DeleteUserDetailsAsync)]
         public async Task<IActionResult> DeleteUserDetailsAsync(Int64 Id)

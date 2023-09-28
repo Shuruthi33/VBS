@@ -20,13 +20,21 @@ namespace VBS.API.Areas.Adminstration.Controllers
         {
             _feedbackService = feedbackService;
         }
+        /// <summary>
+        /// Get and View tha Feedback Details
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [ActionName(APIActionName.FeedbackDetails.GetFeedbackDetailsAsync)]
         public async Task<IActionResult> GetFeedbackDetailsAsync()
         {
             return Ok(await _feedbackService.GetFeedbackDetailsAsync());
         }
-
+        /// <summary>
+        /// Get the Feedback ById
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         [ActionName(APIActionName.FeedbackDetails.GetFeedbackDetailsByIdAsync)]
         public async Task<IActionResult> GetFeedbackDetailsByIdAsync(int id)
@@ -34,7 +42,11 @@ namespace VBS.API.Areas.Adminstration.Controllers
             return Ok(await _feedbackService.GetFeedbackDetailsByIdAsync(id));
         }
 
-
+        /// <summary>
+        /// Insert the FeedBack Details
+        /// </summary>
+        /// <param name="_feedbackDTO"></param>
+        /// <returns></returns>
 
         [HttpPost]
         [ActionName(APIActionName.FeedbackDetails.SaveFeedbackDetailsAsync)]
@@ -43,7 +55,11 @@ namespace VBS.API.Areas.Adminstration.Controllers
             return Ok(await _feedbackService.SaveFeedbackDetailsAsync(_feedbackDTO));
         }
 
-
+        /// <summary>
+        /// Delete the Feedback Details
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpDelete]
         [ActionName(APIActionName.FeedbackDetails.DeleteFeedbackDetailsAsync)]
         public async Task<IActionResult> DeleteFeedbackDetailsAsync(Int64 Id)
