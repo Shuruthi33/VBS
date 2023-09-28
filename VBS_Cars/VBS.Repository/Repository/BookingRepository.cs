@@ -80,8 +80,7 @@ namespace VBS.Repository.Repository
                 parameters.Add(DBParameter.BookingDetails.CustomerId, bookingDTO.CustomerId, DbType.Int16, ParameterDirection.Input);
                 parameters.Add(DBParameter.BookingDetails.VehicleId, bookingDTO.VehicleId, DbType.Int16, ParameterDirection.Input);
                 parameters.Add(DBParameter.BookingDetails.BookingDate, bookingDTO.BookingDate, DbType.DateTime, ParameterDirection.Input);
-                parameters.Add(DBParameter.BookingDetails.PickupDate, bookingDTO.PickupDate, DbType.DateTime, ParameterDirection.Input);
-                parameters.Add(DBParameter.BookingDetails.ReturnDate, bookingDTO.ReturnDate, DbType.DateTime, ParameterDirection.Input);
+                parameters.Add(DBParameter.BookingDetails.PickupDate, bookingDTO.DeliveryDate, DbType.DateTime, ParameterDirection.Input);
                 parameters.Add(DBParameter.BookingDetails.CancelBooking, bookingDTO.CancelBooking, DbType.String, ParameterDirection.Input);
                 parameters.Add(DBParameter.BookingDetails.ReturnStatus, bookingDTO.ReturnStatus, DbType.String, ParameterDirection.Input);
 

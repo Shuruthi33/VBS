@@ -9,8 +9,6 @@ using VBS.Service.Interface;
 namespace VBS.API.Areas.Adminstration.Controllers
 {
   
- 
-
    [Produces(AuthAPIController.InputType.ApplicationJson)]
    [ApiController]
    [Route(AuthAPIController.Property.APIController)]

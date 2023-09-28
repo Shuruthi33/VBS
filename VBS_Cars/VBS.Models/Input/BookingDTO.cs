@@ -12,8 +12,7 @@ namespace VBS.Models.Input
         public int CustomerId { get; set; }
         public int VehicleId { get; set; }
         public DateTime BookingDate { get; set; }
-        public DateTime PickupDate { get; set; }
-        public DateTime ReturnDate { get; set; }
+        public DateTime DeliveryDate { get; set; } 
         public string? CancelBooking { get; set; }
         public string? ReturnStatus { get; set; }
 

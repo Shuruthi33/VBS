@@ -29,9 +29,10 @@ namespace VBS.Models.Output
         public int Year { get; set; }
         public int Price { get; set; }
         public DateTime BookingDate { get; set; }
-        public DateTime PickupDate { get; set;}
+        public DateTime DeliveryDate { get; set; }
         public string? CancelBooking { get; set; }
         public string? ReturnStatus { get; set; }
+       
 
     }
 
