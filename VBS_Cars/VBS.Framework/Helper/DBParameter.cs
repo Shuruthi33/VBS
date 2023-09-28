@@ -53,8 +53,7 @@ namespace VBS.Framework.Helper
             public const string CustomerId = nameof(CustomerId);
             public const string VehicleId = nameof(VehicleId);
             public const string BookingDate = nameof(BookingDate);
-            public const string PickupDate = nameof(PickupDate);
-            public const string ReturnDate = nameof(ReturnDate);
+            public const string DeliveryDate = nameof(DeliveryDate);
             public const string CancelBooking = nameof(CancelBooking);
             public const string ReturnStatus = nameof(ReturnStatus);
         }
