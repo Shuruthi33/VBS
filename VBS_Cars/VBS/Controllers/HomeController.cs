@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using VBS.Models;
 
-namespace VBS.Controllers
+namespace tem.Controllers
 {
     public class HomeController : Controller
     {
