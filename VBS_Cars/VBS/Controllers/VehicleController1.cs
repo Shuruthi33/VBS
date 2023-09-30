@@ -9,5 +9,17 @@ namespace VBS.Controllers
         {
             return View();
         }
+
+        public IActionResult AddVehicle()
+        {
+            return View();
+        }
+
+        public IActionResult GridVehicle()
+        {
+            return View();
+        }
+
+
     }
 }

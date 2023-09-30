@@ -17,7 +17,7 @@ namespace VBS.API.Controllers
         [Produces(AuthAPIController.InputType.ApplicationJson)]
         [ApiController]
         [Route(AuthAPIController.Property.APIController)]
-        //[AllowAnonymous]
+        [AllowAnonymous]
         public class UserAuthenticationController : ControllerBase
         {
             private readonly IAuthenticateService _user;

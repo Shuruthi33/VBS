@@ -26,12 +26,23 @@ namespace VBS.API
 
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy(name: "AllowSpecificOrigins",
-                                  policy =>
-                                  {
-                                      policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-                                  });
+                options.AddPolicy("AllowSpecificOrigin", builder =>
+                {
+                    builder.WithOrigins("https://localhost:7170")
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
             });
+            //builder.Services.AddCors(options =>
+            //{
+            //    options.AddPolicy(name: "AllowAll",
+            //                      policy =>
+            //                      {
+            //                          policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+            //                      });
+            //});
+
+
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(c =>
@@ -101,12 +112,12 @@ namespace VBS.API
             builder.Services.AddTransient<IBookingRepository, BookingRepository>();
             builder.Services.AddTransient<IBookingService, BookingService>();
 
-             //Feedback Service Repository
+            //Feedback Service Repository
             builder.Services.AddTransient<IFeedbackRepository, FeedbackRepository>();
             builder.Services.AddTransient<IFeedbackService, FeedbackService>();
 
-           
-          
+
+
 
             var app = builder.Build();
 
@@ -118,7 +129,7 @@ namespace VBS.API
             }
 
             app.UseHttpsRedirection();
-              
+
             app.UseAuthentication();
 
 
@@ -126,7 +137,7 @@ namespace VBS.API
 
 
             app.MapControllers();
-
+            app.UseCors("AllowSpecificOrigin");
             app.Run();
         }
     }

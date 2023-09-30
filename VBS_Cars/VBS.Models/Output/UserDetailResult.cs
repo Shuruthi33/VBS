@@ -10,8 +10,9 @@ namespace VBS.Models.Output
     public class UserDetailsResult
     {
         public int StatusCode { get; set; }
-       
+        public string JWTToken { get; set; }
         public object? ResultData { get; set; }
+
         public string StatusMessage { get; set; } = string.Empty;
 
         public UserDetailsDTO? UserDetails { get; set; }

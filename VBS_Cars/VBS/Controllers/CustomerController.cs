@@ -4,7 +4,7 @@ namespace VBS.Controllers
 {
     public class CustomerController : Controller
     {
-        public IActionResult Customer()
+        public IActionResult GridCustomer()
         {
             return View();
         }
