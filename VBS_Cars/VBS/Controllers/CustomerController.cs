@@ -13,5 +13,15 @@ namespace VBS.Controllers
         {
             return View();
         }
+        //public IActionResult Edit()
+        //{
+        //    return View();
+        //}
+        public IActionResult Edit(Int16 CustomerId=0)
+        {
+            ViewBag.CustomerId = CustomerId;
+           
+            return View();  
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace VBS.API.Areas.Adminstration.Controllers
     [Produces(AuthAPIController.InputType.ApplicationJson)]
     [ApiController]
     [Route(AuthAPIController.Property.APIController)]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+   // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class VehicleController : ControllerBase
     {
         public readonly IVehicleService _vehicleService;

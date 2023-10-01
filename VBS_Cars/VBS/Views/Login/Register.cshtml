@@ -29,7 +29,7 @@
 </head>
 
 <body>
-   
+
     <!-- preloader area start -->
     <div id="preloader">
         <div class="loader"></div>
@@ -39,39 +39,44 @@
     <div class="login-area login-bg">
         <div class="container">
             <div class="login-box ptb--100">
-                <form>
+                <form id="frmRegister">
                     <div class="login-form-head">
-                        <h4>Sign up</h4>
-                        <p>Hello there, Sign up and Join with Us</p>
+                        <h4>Register Here</h4>
+                       
                     </div>
                     <div class="login-form-body">
                         <div class="form-gp">
                             <label for="exampleInputName1">Full Name</label>
-                            <input type="text" id="exampleInputName1">
+                            <input type="text" id="txtfullname" name="fullname">
                             <i class="ti-user"></i>
                             <div class="text-danger"></div>
                         </div>
                         <div class="form-gp">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" id="exampleInputEmail1">
+                            <input type="email" id="txtemail" name="email">
                             <i class="ti-email"></i>
                             <div class="text-danger"></div>
                         </div>
                         <div class="form-gp">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" id="exampleInputPassword1">
+                            <input type="password" id="txtpassword" name="password">
                             <i class="ti-lock"></i>
                             <div class="text-danger"></div>
                         </div>
                         <div class="form-gp">
-                            <label for="exampleInputPassword2">Confirm Password</label>
-                            <input type="password" id="exampleInputPassword2">
+                            <label for="exampleInputAddress"> Address</label>
+                            <input type="text" id="txtaddress" name="address">
+                            <i class="ti-lock"></i>
+                            <div class="text-danger"></div>
+                        </div>
+                        <div class="form-gp">
+                            <label for="exampleInputNumber">PhoneNo</label>
+                            <input type="number" id="txtnumber" name="number">
                             <i class="ti-lock"></i>
                             <div class="text-danger"></div>
                         </div>
                         <div class="submit-btn-area">
-                            <button id="form_submit" type="submit">Submit <i class="ti-arrow-right"></i></button>
-                        
+                            <button id="form_submit" type="submit" onclick="Register()">Submit <i class="ti-arrow-right"></i></button>
                         </div>
                         <div class="form-footer text-center mt-5">
                             <p class="text-muted">Don't have an account? <a href="login.html">Sign in</a></p>
@@ -95,40 +100,65 @@
     <!-- others plugins -->
     <script src="~/assets/js/plugins.js"></script>
     <script src="~/assets/js/scripts.js"></script>
+    <script src="~/assets/js/vbs/login.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        // Add custom validation method for special character check
-        $.validator.addMethod("specialChar", function(value, element) {
-            return  /[!$%^&*(),.?":{}|<>]/.test(value);
-        }, "Password must contain at least one special character");
-
-        // Initialize the form validation
-        $("#exampleInputName1").validate({
-            rules: {
-                exampleInputPassword1: {
-                    required: true,
-                    minlength: 8,
-                    specialChar: true
+    <script>
+        $(document).ready(function () {
+            $("#frmRegister").validate({
+                rules: {
+                    fullname: {
+                        required: true
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        required: true,
+                        minlength: 8,
+                        specialChar: true
+                    },
+                    address: {
+                        required: true
+                    },
+                    number: {
+                        required: true
+                    }
+                },
+                messages: {
+                    fullname: {
+                        required: "Please enter your full name"
+                    },
+                    email: {
+                        required: "Please enter your email address",
+                        email: "Please enter a valid email address"
+                    },
+                    password: {
+                        required: "Please enter a password",
+                        minlength: "Your password must be at least 8 characters long",
+                        specialChar: "Password must contain at least one special character"
+                    },
+                    address: {
+                        required: "Please enter your address"
+                    },
+                    number: {
+                        required: "Please enter your phone number"
+                    }
+                },
+                errorElement: 'div',
+                errorPlacement: function (error, element) {
+                    error.addClass('text-danger');
+                    error.insertAfter(element);
                 }
-            },
-            messages: {
-                exampleInputPassword1: {
-                    required: "Please provide a password",
-                    minlength: "Your password must be at least 8 characters long",
-                    specialChar: "Password must contain at least one special character"
-                }
-            },
-            errorElement: 'div',
-            errorPlacement: function (error, element) {
-                error.addClass('text-danger');
-                error.insertAfter(element);
-            }
+            });
+
+            $.validator.addMethod("specialChar", function (value, element) {
+                return /-/.test(value);
+            }, "Password must contain at least one special character");
         });
-    });
-</script>
+    </script>
+
 
 </body>
 

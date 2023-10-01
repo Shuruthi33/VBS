@@ -1,92 +1,162 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RestSharp;
 using System.Net;
+using VBS.Models;
 using VBS.Models.Input;
 using AuthUserResultArgs = VBS.Models.Output.UserDetailsResult;
 
 namespace VBS.Controllers
 {
+    
     public class LoginController : Controller
     {
         public IActionResult Login()
         {
             return View();
         }
-        public IActionResult Dashboard()
-        {
-            return View();
-        }
+       
         public IActionResult Register()
         {
             return View();
         }
+        //[Route("Authenticate")]
+        //public async Task<IActionResult> Authenticate(Models.UserCredential userCredential)
+        //{
+        //    AuthUserResultArgs result = new AuthUserResultArgs();
+        //    try
+        //    {
+        //        result = UserAuthentication(userCredential);
+        //    }
+        //    catch (Exception ex)
+        //    {
 
+        //    }
+
+          //  return Ok(result);
+        //}
         [HttpPost]
-        [Route("Authenticate")]
-        public async Task<IActionResult> Authenticate([FromBody] UserCredential userCredential)
+        [Route("RestLogin")]
+        public RestResponse RestLogin(Models.UserCredential obj)
         {
-            AuthUserResultArgs result = new AuthUserResultArgs();
-            try
+
+            var options = new RestClientOptions("https://localhost:7011")
             {
-                result = UserAuthentication(userCredential);
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-            return Ok(result);
-        }
-
-
-        private AuthUserResultArgs UserAuthentication(UserCredential userCredential)
-        {
-            var baseUrl = "https://localhost:7011/api/";
-
-            AuthUserResultArgs result = new AuthUserResultArgs();
-
-            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
-            var client = new RestClient(baseUrl + "UserAuthentication/Authenticate");
-            var request = new RestRequest("", RestSharp.Method.Post);
-            request.AddHeader("Accept", "application/json");
+                MaxTimeout = -1,
+            };
+            var client = new RestClient(options);
+            var request = new RestRequest("/api/UserAuthentication/Authenticate", Method.Post);
+            request.AddHeader("Content-Type", "application/json");
             var body = new
             {
-                customerName = userCredential.CustomerName,
-                password = userCredential.Password
+                UserName = obj.CustomerName,
+               
+                Password = obj.Password,
             };
             request.AddJsonBody(body);
-            RestResponse restresponse = client.Execute(request);
-            if (restresponse != null && !string.IsNullOrEmpty(restresponse.Content))
+
+            //  request.AddStringBody(body, DataFormat.Json);
+            RestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
+
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+            string str = response.Content.ToString();
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+
+            //  setting variables in the[Session]
+            if (!string.IsNullOrEmpty(response.Content))
             {
-                result = JsonConvert.DeserializeObject<AuthUserResultArgs>(restresponse.Content);
+                var getData = JsonConvert.DeserializeObject<ReturnSession>(str);
+                var CustomerName = getData.resultData.CustomerName;
+                var CustomerId = getData.resultData.CustomerId;
+                var Email = getData.resultData.Email;
+                var PhoneNo = getData.resultData.PhoneNo;
+                var Address = getData.resultData.Address;
+                var Password = getData.resultData.Password;
+                var RoleId = getData.resultData.RoleId;
 
-                if (result.UserDetails != null)
+                if (!string.IsNullOrEmpty(Email))
                 {
-                    if (result.UserDetails.CustomerId > 0)
-                    {
-                        HttpContext.Session.SetString("x", result.UserDetails.CustomerName);
-                        HttpContext.Session.SetString("Token", result.JWTToken);
-                        result.StatusCode = 200;
-                    }
-                    else
-                    {
-                        result.StatusCode = 204;
-                    }
+                    HttpContext.Session.SetString("EMAIL", Email);
+
                 }
-                else
+                if (!string.IsNullOrEmpty(CustomerName))
                 {
-                    result.StatusCode = 204;
+                    HttpContext.Session.SetString("UNAME", CustomerName);
                 }
+                if (!string.IsNullOrEmpty(Password))
+                {
+                    HttpContext.Session.SetString("UPASSWORD", Password);
+                }
+                if (!string.IsNullOrEmpty(PhoneNo))
+                {
+                    HttpContext.Session.SetString("UADDRESS", Address);
+                }
+                if (!string.IsNullOrEmpty(PhoneNo))
+                {
+                    HttpContext.Session.SetString("UPHONENO", PhoneNo);
+                }
+
+                //var Url = _configuration["ApibaseUrlUsers"];
+               // var AdminUrl = _configuration["ApibaseUrlAdmin"];
+
+
+                
+
+                HttpContext.Session.SetInt32("UID", CustomerId);
+                HttpContext.Session.SetInt32("UROLE", RoleId);
+               // HttpContext.Session.SetInt32("USELLER", userIsSeller);
+
             }
+            return response;
 
-
-
-
-
-
-            return result;
         }
+        //[HttpPost]
+        //[Route("UserAuthentication")]
+        //public AuthUserResultArgs UserAuthentication(UserCredential userCredential)
+        //{
+        //    var baseUrl = "https://localhost:7011/api/";
+
+        //    AuthUserResultArgs result = new AuthUserResultArgs();
+
+        //    ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+        //    var client = new RestClient(baseUrl + "/Login/Authenticate");
+        //    var request = new RestRequest("", RestSharp.Method.Post);
+        //    request.AddHeader("Accept", "application/json");
+        //    var body = new
+        //    {
+        //        customerName = userCredential.CustomerName,
+        //        password = userCredential.Password
+        //    };
+        //    request.AddJsonBody(body);
+        //    RestResponse restresponse = client.Execute(request);
+
+        //    string src = 
+        //    if (restresponse != null && !string.IsNullOrEmpty(restresponse.Content))
+        //    {
+        //        result = JsonConvert.DeserializeObject<ReturnSession>(restresponse.Content);
+
+        //        if (result.UserDetails != null)
+        //        {
+        //            if (result.UserDetails.CustomerId > 0)
+        //            {
+        //                HttpContext.Session.SetString("x", result.UserDetails.CustomerName);
+        //                HttpContext.Session.SetString("Token", result.JWTToken);
+        //                result.StatusCode = 200;
+        //            }
+        //            else
+        //            {
+        //                result.StatusCode = 204;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            result.StatusCode = 204;
+        //        }
+        //    }
+        // return result;
+        //}
 
     }
 }

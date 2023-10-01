@@ -1,49 +1,75 @@
 ﻿// Login authentication
-const Auth = async () => {
-    var response = 0;
-    let frmname = $("#login-form");
+const Login = async () => {
 
-    // Initialize the form validation
-    frmname.validate({
-        rules: {
-            username: "required",
-            password: "required"
+    var Response = 0;
+
+    var login = {
+        CustomerName: $('#txtusername').val(),
+        Password: $('#txtpassword').val()
+    };
+
+    alert("-");
+    $.ajax({
+        type: 'POST',
+        url: "https://localhost:7011/api/UserAuthentication/Authenticate",
+        contentType: "application/json",
+        data: JSON.stringify(login),
+        async: false,
+        success: function (data) {
+            if (data != null && data.statusCode == 200) {
+                alert("save success");  
+              // document.login_form.action = "https://localhost:7170/Vehicle/AddVehicle";
+               //swindow.location.href = "/Vehicle/GridVehicle";
+               // document.getElementById("login-form").formAction = "https://localhost:7170/Vehicle/AddVehicle";
+            }
+            else {
+                alert('Invalid User Name and Password...');
+            }
         },
-        messages: {
-            username: "Please enter your username",
-            password: "Please enter your password"
+        error: function (error) {
+             alert('Invalid User Name and Password...');
+        }
+    });
+}
+
+
+
+const Register = async (Id) => {
+    var Response = 0;
+    alert(Id);
+    var data = {
+        CustomerId: Id,
+        CustomerName: $('#txtfullname').val(),
+        Email: $('#txtemail').val(),
+        Password: $('#txtpassword').val(),
+        Address: $('#txtaddress').val(),
+        PhoneNo: $('#txtnumber').val()
+    }
+    console.log('data', data);
+    alert("OKKK");
+    $.ajax({
+        type: 'POST',
+        url: "https://localhost:7011/api/User/SaveUserDetailsAsync",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        async: true,
+        success: function (data) {
+            alert("SUCESS");
+            console.log('data', data);
+           
+            if (data != null && data.statusCode == 200) {
+                alert("save success")
+                window.location.href = "/Login/Login";
+            }
+        },
+        error: function (error) {
+            alert('server error');
         }
     });
 
-    if (frmname.valid()) {
-        debugger;
-        var data = {
-            CustomerName: $('#exampleInputEmail1').val(), 
-            Password: $('#exampleInputPassword1').val()   
-        };
 
-        $.ajax({
-            type: 'POST',
-            url: "/Authenticate", 
-            contentType: "application/json",
-            data: JSON.stringify(data),
-            async: false,
-            success: function (data) {
-                debugger;
-                console.log('data', data);
+}
 
-                if (data != null && data.statusCode == 200) {
-                    window.location.href = '/Vehicle/Vehicle';
-                } else {
-                    alert('Invalid user name and password...');
-                }
-                debugger;
-            },
-            error: function (error) {
-               
-            }
-        });
-    }
-};
+
 
 

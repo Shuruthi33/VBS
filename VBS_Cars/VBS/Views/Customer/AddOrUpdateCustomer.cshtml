@@ -1,30 +1,40 @@
-﻿<div class="card-body">
-    <h4 class="header-title">Customer Information</h4>
+﻿<h4 class="header-title">Customer Information</h4>
+<form>
+    <input type="hidden" id="hdnCustomerId" value="@ViewBag.CustomerId" />
+    <div class="card-body">
+        <div class="form-group">
+            <label for="name" class="col-form-label">Name</label>
+            <input class="form-control" type="text" value="" id="name">
+        </div>
 
-    <div class="form-group">
-        <label for="customer-name" class="col-form-label">Name</label>
-        <input class="form-control" type="text" value="" id="name">
+        <div class="form-group">
+            <label for="email" class="col-form-label">Email</label>
+            <input class="form-control" type="email" value="" id="email">
+        </div>
+
+        <div class="form-group">
+            <label for="phoneNo" class="col-form-label">Phone Number</label>
+            <input class="form-control" type="tel" value="" id="phoneNo">
+        </div>
+
+        <div class="form-group">
+            <label for="address" class="col-form-label">Address</label>
+            <textarea class="form-control" type="text" value="" id="address"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="image" class="col-form-label">Profile Image</label>
+            <input class="form-control" type="file" accept="image/*" id="image">
+        </div>
+        <button type="submit" class="btn btn-primary" onclick="GetCustomerDetails">Submit</button>
     </div>
+</form>
+<script>
+    $(document).ready(function () {
 
-    <div class="form-group">
-        <label for="customer-email" class="col-form-label">Email</label>
-        <input class="form-control" type="email" value="" id="email">
-    </div>
+        if (@ViewBag.CustomerId> 0) {
+            GetCustomerDetailsById(@ViewBag.CustomerId);
+        }
+    });
 
-    <div class="form-group">
-        <label for="customer-mobile" class="col-form-label">Phone Number</label>
-        <input class="form-control" type="tel" value="" id="phoneNo">
-    </div>
-
-    <div class="form-group">
-        <label for="customer-address" class="col-form-label">Address</label>
-        <textarea class="form-control" type="text" value="" id="address"></textarea>
-    </div>
-
-    <div class="form-group">
-        <label for="profile-image" class="col-form-label">Profile Image</label>
-        <input class="form-control" type="file" accept="image/*" id="image">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-
-</div>
+</script>

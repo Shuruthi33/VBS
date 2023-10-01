@@ -1,0 +1,50 @@
+﻿ <<div class="card-body">
+    <h4 class="header-title">Personal Information</h4>
+    <form>
+        <input type="hidden" id="hdnCustomerId" value="@ViewBag.CustomerId" />
+        <!-- Name -->
+        <div class="form-group">
+            <label for="name" class="col-form-label">Name</label>
+            <input class="form-control" type="text" id="name">
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email" class="col-form-label">Email</label>
+            <input class="form-control" type="email" id="email">
+        </div>
+
+        <!-- Address -->
+        <div class="form-group">
+            <label for="address" class="col-form-label">Address</label>
+            <input class="form-control" type="text" id="address">
+        </div>
+
+        <!-- Phone Number -->
+        <div class="form-group">
+            <label for="phone" class="col-form-label">Phone Number</label>
+            <input class="form-control" type="tel" id="phone">
+        </div>
+
+     
+
+        <div class="form-group">
+            <Button onclick="SaveOrUpdateCustomer('+ ViewBag.CustomerId +')" type="submit" class="btn btn-primary mt-4 pl-4 pr-4">Submit</Button>
+        </div>
+    </form>
+</div>
+
+<script src="~/assets/js/vbs/customer.js"></script>
+
+<script>
+   
+    $(document).ready(function () {
+        debugger;        
+        alert(@ViewBag.CustomerId);
+        if (@ViewBag.CustomerId> 0) {
+            GetCustomerDetailsById(@ViewBag.CustomerId);
+        }
+    });
+
+</script>
+

@@ -1,6 +1,8 @@
 ﻿<div class="card-body">
     <h4 class="header-title">Vehicle Information</h4>
-
+    <form>
+        <input type="hidden" id="hdnVehicleId" value="@ViewBag.VehicleId" />
+    <div><label for="carMakeDropdown" class="col-form-label" id="errmsg"></label></div>
     <!-- Make -->
     <div class="form-group">
         <label for="carMakeDropdown" class="col-form-label">Car Make</label>
@@ -84,10 +86,23 @@
         <input class="form-control" type="number" id="engineSize">
     </div>
 
+   
+    <!-- Image e -->
+    <div class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Image</span>
+            </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="image">
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+            </div>
+        </div>
+    </div>
     <!-- Fuel Type -->
     <div class="form-group">
-        <label for="fuelType" class="col-form-label">Fuel Type</label>
-        <input class="form-control" type="text" id="fuelType">
+        <label for="fuelType" class="col-form-label">Fuel Tank </label>
+        <input class="form-control" type="number" id="fuelTank">
     </div>
 
     <!-- Fuel Tank -->
@@ -160,8 +175,20 @@
             <input class="form-control" type="text" id="availability">
         </div>
 
+    <div class="form-group">
+        <Button onclick="AddVehicleDetails()" type="submit" class="btn btn-primary mt-4 pl-4 pr-4">Submit</Button>
+        </div>
+        </form>
     </div>
 
+<script>
+    $(document).ready(function () {
 
+        if (@ViewBag.VehicleId> 0) {
+            GetCustomerDetailsById(@ViewBag.VehicleId);
+        }
+    });
+
+</script>
 
 

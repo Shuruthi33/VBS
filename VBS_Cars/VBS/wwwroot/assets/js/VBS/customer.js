@@ -20,7 +20,11 @@
                             tbodydata += '<td>' + value.email + '</td>';
                             tbodydata += '<td>' + value.address + '</td>';
                             tbodydata += '<td>' + value.phoneNo + '</td>';
-                       
+                            tbodydata += '<td> <div> <a href = "/Customer/Edit?CustomerId=' + value.customerId + '"> ' +
+                                '<span class="ti-pencil" type="button" title="Edit"></span></a> ' +
+                                '<a href = "#" onclick="DeleteCustomerById(' + value.customerId + ')"/> ' +
+                                '<span class="ti-trash" type="button" title="Delete"></span></a> ' +
+                                '</div ></td>';
                             tbodydata += '</tr>';
                         });
                         console.log(tbodydata);
@@ -39,28 +43,29 @@
     return Response;
 }
 
-
 const GetCustomerDetailsById = async (Id) => {
 
     var Response = 0;
-
-
+    alert("okk")
+    var data = { id : Id };
     try {
         await $.ajax({
             type: 'GET',
             url: "https://localhost:7011/api/User/GetUserDetailsByIdAsync?id=" + Id,
             contentType: "application/json",
-            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-            data: { id: Id },
+            data: JSON.stringify(data),
             async: false,
             success: function (data) {
-
                 if (data != null && data.statusCode == 200) {
+                    $('#hdnCustomerId').val(data.resultData.customerId);
                     $('#name').val(data.resultData.customerName);
                     $('#email').val(data.resultData.email);
                     $('#address').val(data.resultData.address);
                     $('#phoneNo').val(data.resultData.phoneNo);
                 }
+            },
+            error: function (error) {
+                alert('server error');
             }
 
         });
@@ -74,34 +79,60 @@ const GetCustomerDetailsById = async (Id) => {
 
 const SaveOrUpdateCustomer = async (Id) => {
     var Response = 0;
-    // alert(Id);
+
+    alert("ok");
+    alert(Id);
+
     var data = {
-        UserId: Id,
+        customerId: Id,
         customerName: $('#name').val(),
         email: $('#email').val(),
         address: $('#address').val(),
+        password: $('#password').val(),
+        phoneNo: $('#phoneNo').val()
 
-        phoneNo: $('#phoneNo').val(),
-       
+    };
 
-    }
-    console.log('data', data);
-    alert()
     $.ajax({
         type: 'POST',
-        url: "https://localhost:7138/api/User/InsertUserDetailsAsync",
+        url: "https://localhost:7011/api/User/InsertUserDetailsAsync",
         contentType: "application/json",
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         data: JSON.stringify(data),
-        async: false,
+        async: true,
         success: function (data) {
-            console.log('data', data);
             alert("save success")
             if (data != null && data.statusCode == 200) {
-                window.location.href = "/Administrations/Administrations";
+                window.location.href = "/Customer/GridCustomer";
             }
         }
     });
 
+
+}
+
+const DeleteCustomerById = async (Id) => {
+    var Response = 0;
+
+    alert("ok");
+    try {
+        await $.ajax({
+            type: 'DELETE',
+            url: 'https://localhost:7011/api/User/DeleteUserDetailsAsync?Id=' + Id + '',
+            contentType: "application/json",
+            data: { id: Id },
+            async: false,
+            success: function (data) {
+                if (data != null && data.statusCode == 200) {
+                    alert("Deletd Sucessfully");
+                    GetVehicleDetails();
+                }
+            }
+        });
+    }
+    catch (err) {
+        await console.log(err);
+    }
+
+    return Response;
 
 }
