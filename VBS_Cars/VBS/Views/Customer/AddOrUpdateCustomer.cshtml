@@ -4,48 +4,56 @@
     <input type="hidden" id="hdnCustomerId" value="@ViewBag.CustomerId" />
     <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control rounded-0 rounded-0" id="name" name="name"
+        <input type="text" class="form-control" id="name" name="name"
         placeholder="Enter your Name">
     </div>
     <div class="form-group">
         <label for="email">Email Address</label>
-        <input type="text" class="form-control rounded-0 rounded-0" id="email" name="email"
+        <input type="text" class="form-control" id="email" name="email"
         placeholder="Enter your Email">
         <span class="mt-2 d-block">We'll never share your email with anyone else.</span>
     </div>
     <div class="form-group">
         <label for="phoneNo">Phone Number</label>
-        <input type="number" class="form-control rounded-0 rounded-0" id="phoneNo" name="phoneNo"
-        placeholder="Password">
+        <input type="number" class="form-control" id="phoneNo" name="phoneNo"
+        placeholder="Phone Number">
     </div>
     <div class="form-group">
         <label for="address">Address</label>
-        <input type="text" class="form-control rounded-0 rounded-0" id="address" name="address"
-        placeholder="Password">
+        <input type="text" class="form-control" id="address" name="address"
+        placeholder="Address">
     </div>
     <div class="form-group">
         <label for="image">Example file input</label>
-        <input type="file" class="form-control rounded-0-file" id="image" name="image"> 
+        <input type="file" class="form-control" id="image" name="image">
     </div>
     <div class="form-footer">
       @*  <button type="submit" onclick="AddOrUpdateCustomer()">Submit</button>
         <button type="button" class="mb-1 btn btn-success">Success</button>*@
-        <button type="button" class="mb-1 btn btn-success" onclick="AddOrUpdateCustomer()">Save</button>
+        <button type="submit" class="mb-1 btn btn-success" onclick="AddOrUpdateCustomer()">Save</button>
         @*  <button type="submit" class="btn btn-light btn-pill">Cancel</button>*@
     </div>
 
 </form>
+<script>
+    $(document).ready(function () {
 
-<script src="~/assets/js/vbs/customer.js"></script>
-<!-- Include jQuery -->
+        if (@ViewBag.CustomerId> 0) {
+            AddOrUpdateCustomer(@ViewBag.CustomerId);
+        }
+    });
+
+</script>
+
+@*<!-- Include jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+*@
 <!-- Include jQuery Validation -->
-@*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"></script>*@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 
-
+<script src="~/assets/js/vbs/customer.js"></script>
 <script>
     $(document).ready(function () {
         $("#frmCustomer").validate({
@@ -80,18 +88,30 @@
                     required: "Please enter your phone number",
                     number: "Please enter a valid phone number"
                 },
+
                 address: "Please enter your address",
+
                 image: {
                     required: "Please upload an image",
                     accept: "Please upload a valid image file"
                 }
             },
-            submitHandler: function (form) {
-                AddOrUpdateCustomer(); // Call your function to handle form submission
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
             }
         });
     });
 
 
 </script>
+
+
 

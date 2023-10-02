@@ -1,52 +1,98 @@
 ﻿const GetVehicleDetails = async () => {
-    var Response;
+        try {
+            var Response = await $.ajax({
+                type: 'GET',
+                url: "https://localhost:7011/api/Vehicle/GetVehicleDetailsAsync",
+                contentType: "application/json",
+                headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+                data: {},
+                async: false,
+                success: function (data) {
+                    if (data != null && data.statusCode == 200) {
+                        if (data.resultData.length > 0) {
+                            var tbodydata = '';
+                            $.each(data.resultData, function (key, value) {
+                                tbodydata += '<tr>';
+                                tbodydata += '<td>' + value.make + '</td>';
+                                tbodydata += '<td>' + value.model + '</td>';
+                                tbodydata += '<td>' + value.year + '</td>';
+                                tbodydata += '<td>' + value.price + '</td>';
+                                tbodydata += '<td>' + value.mileage + '</td>';
+                                tbodydata += '<td>' + value.licensePlate + '</td>';
+                                tbodydata += '<td>' + value.colour + '</td>';
+                                tbodydata += '<td>' + value.vin + '</td>';
+                                tbodydata += '<td>' + value.engineType + '</td>';
+                                tbodydata += '<td>' + value.engineSize + '</td>';
+                                tbodydata += '<td>' + value.fuelType + '</td>';
+                                tbodydata += '<td>' + value.fuelTank + '</td>';
+                                tbodydata += '<td>' + value.seatingCapacity + '</td>';
+                                tbodydata += '<td>' + value.condition + '</td>';
+                                tbodydata += '<td>' + value.features + '</td>';
+                                tbodydata += '<td>' + value.versionName + '</td>';
+                                tbodydata += '<td>' + value.exShowroomPrice + '</td>';
+                                tbodydata += '<td>' + value.rto + '</td>';
+                                tbodydata += '<td>' + value.insurance + '</td>';
+                                tbodydata += '<td>' + value.availability + '</td>';
+                            });
+
+                            $("#tblVehicle tbody").empty();
+                            $("#tblVehicle tbody").append(tbodydata);
+                        }
+                    }
+                }
+            });
+
+            return Response;
+        } catch (err) {
+            console.log(err);
+           
+            return Response; // or throw an error
+        }
+    }
+
+
+
+
+GetVehicleDetails();
+const GetVehicleDetailsById = async (Id) => {
+
+    var Response = 0;
+
 
     try {
         await $.ajax({
             type: 'GET',
-            url: "https://localhost:7011/api/Vehicle/GetVehicleDetailsAsync",
+            url: "https://localhost:7138/api/User/GetUserDetailsByIdAsync?id=" + Id,
             contentType: "application/json",
-            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-            /// localStorage.setItem('token',(res.token))
-            data: {},
+            data: { id: Id },
             async: false,
             success: function (data) {
+
                 if (data != null && data.statusCode == 200) {
-                    if (data.resultData.length > 0) {
-                        var tbodydata = '';
-                        $.each(data.resultData, function (key, value) {
-                            tbodydata += '<tr>';
-                            tbodydata += '<td>' + value.make + '</td>';
-                            tbodydata += '<td>' + value.model + '</td>';
-                            tbodydata += '<td>' + value.year + '</td>';
-                            tbodydata += '<td>' + value.price + '</td>';
-                            tbodydata += '<td>' + value.mileage + '</td>';
-                            tbodydata += '<td>' + value.licensePlate + '</td>';
-                            tbodydata += '<td>' + value.colour + '</td>';
-                            tbodydata += '<td>' + value.vin + '</td>';
-                            tbodydata += '<td>' + value.engineType + '</td>';
-                            tbodydata += '<td>' + value.engineSize + '</td>';
-                            tbodydata += '<td>' + value.fuelType + '</td>';
-                            tbodydata += '<td>' + value.fuelTank + '</td>';
-                            tbodydata += '<td>' + value.seatingCapacity + '</td>';
-                            tbodydata += '<td>' + value.condition + '</td>';
-                            tbodydata += '<td>' + value.features + '</td>';
-                            tbodydata += '<td>' + value.versionName + '</td>';
-                            tbodydata += '<td>' + value.exShowroomPrice + '</td>';
-                            tbodydata += '<td>' + value.rto + '</td>';
-                            tbodydata += '<td>' + value.insurance + '</td>';
-                            tbodydata += '<td>' + value.availability + '</td>';
-                          
+                    $('#hdnVehicleId').val(data.resultData.VehicleId);
+                    $('#carMakeDropdown').val(data.resultData.make);
+                    $('#carModel').val(data.resultData.year);
+                    $('#year').val(data.resultData.price);
+                    $('#mileage').val(data.resultData.mileage);
+                    $('#licensePlate').val(data.resultData.licensePlate);
+                    $('#colour').val(data.resultData.colour);
+                    $('#fuelTank').val(data.resultData.fuelTank);
+                    $('#engineType').val(data.resultData.engineType);
+                    $('#engineSize').val(data.resultData.engineSize);
+                    $('image').val(data.resultData.image);
+                    $('seatingCapacity').val(data.resultData.seatingCapacity);
+                    $('condition').val(data.resultData.condition);
+                    $('features').val(data.resultData.features);
+                    $('versionName').val(data.resultData.versionName);
+                    $('exShowroomPrice').val(data.resultData.exShowroomPrice);
+                    $('rto').val(data.resultData.roleId);
+                    $('insurance').val(data.resultData.insurance);
+                    $('availability').val(data.resultData.availability);
 
-                            tbodydata += '</tr>';
-                        });
-                        console.log(tbodydata);
 
-                        $("#tblVehicle tbody").empty();
-                        $("#tblVehicle tbody").append(tbodydata);
-                    }
                 }
             }
+
         });
     }
     catch (err) {
@@ -55,54 +101,6 @@
 
     return Response;
 }
-
-//const GetVehicleDetailsById = async (Id) => {
-
-//    var Response = 0;
-
-
-//    try {
-//        await $.ajax({
-//            type: 'GET',
-//            url: "https://localhost:7138/api/User/GetUserDetailsByIdAsync?id=" + Id,
-//            contentType: "application/json",
-//            data: { id: Id },
-//            async: false,
-//            success: function (data) {
-
-//                if (data != null && data.statusCode == 200) {
-//                    $('#hdnVehicleId').val(data.resultData.VehicleId);
-//                    $('#carMakeDropdown').val(data.resultData.make);
-//                    $('#carModel').val(data.resultData.year);
-//                    $('#year').val(data.resultData.price);
-//                    $('#mileage').val(data.resultData.mileage);
-//                    $('#licensePlate').val(data.resultData.licensePlate);
-//                    $('#colour').val(data.resultData.colour);
-//                    $('#fuelTank').val(data.resultData.fuelTank);
-//                    $('#engineType').val(data.resultData.engineType);
-//                    $('#engineSize').val(data.resultData.engineSize);
-//                    $('image').val(data.resultData.image);
-//                    $('seatingCapacity').val(data.resultData.seatingCapacity);
-//                    $('condition').val(data.resultData.condition);
-//                    $('features').val(data.resultData.features);
-//                    $('versionName').val(data.resultData.versionName);
-//                    $('exShowroomPrice').val(data.resultData.exShowroomPrice);
-//                    $('rto').val(data.resultData.roleId);
-//                    $('insurance').val(data.resultData.insurance);
-//                    $('availability').val(data.resultData.availability);
-
-
-//                }
-//            }
-
-//        });
-//    }
-//    catch (err) {
-//        await console.log(err);
-//    }
-
-//    return Response;
-//}
 
 //const AddVehicleDetails = async () => {
 //    try {
@@ -167,32 +165,32 @@
        
 //}
 
-//const DeleteVehicleById = async (Id) => {
-//    var Response = 0;
+const DeleteVehicleById = async (Id) => {
+    var Response = 0;
 
 
-//    try {
-//        await $.ajax({
-//            type: 'DELETE',
-//            url: 'https://localhost:7011/api/Vehicle/DeleteVehicleDetailsAsync?id=' + Id + '',
-//            contentType: "application/json",
-//            data: { id: Id },
-//            async: false,
-//            success: function (data) {
-//                if (data != null && data.statusCode == 200) {
-//                    alert("Deletd Sucessfully");
-//                    GetVehicleDetails();
-//                }
-//            }
-//        });
-//    }
-//    catch (err) {
-//        await console.log(err);
-//    }
+    try {
+        await $.ajax({
+            type: 'DELETE',
+            url: 'https://localhost:7011/api/Vehicle/DeleteVehicleDetailsAsync?id=' + Id + '',
+            contentType: "application/json",
+            data: { id: Id },
+            async: false,
+            success: function (data) {
+                if (data != null && data.statusCode == 200) {
+                    alert("Deletd Sucessfully");
+                    GetVehicleDetails();
+                }
+            }
+        });
+    }
+    catch (err) {
+        await console.log(err);
+    }
 
-//    return Response;
+    return Response;
 
-//}
+}
 
 
 

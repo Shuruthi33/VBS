@@ -1,6 +1,6 @@
 ﻿const GetCustomerDetails = async () => {
     var Response;
-
+    debugger;
     try {
         await $.ajax({
             type: 'GET',
@@ -14,16 +14,17 @@
                         var tbodydata = '';
                         $.each(data.resultData, function (key, value) {
                             tbodydata += '<tr>';
-                            tbodydata += '<td>' + value.customerId + '</td>';
+                            //tbodydata += '<td>' + value.customerId + '</td>';
                             tbodydata += '<td>' + value.customerName + '</td>';
                             tbodydata += '<td>' + value.email + '</td>';
                             tbodydata += '<td>' + value.address + '</td>';
                             tbodydata += '<td>' + value.phoneNo + '</td>';
-                            tbodydata += '<td> <div> <a href = "/Customer/Edit?CustomerId=' + value.customerId + '"> ' +
-                                '<span <i class="mdi mdi-border-color"></i> type="button" title="Edit"></span></a> ' +
-                                '<a href = "#" onclick="DeleteCustomerById(' + value.customerId + ')"/> ' +
-                                '<span<i class="mdi mdi-delete-forever"></i> type="button" title="Delete"></span></a> ' +
-                                '</div ></td>';
+                            tbodydata += '<td> <a href = "/Customer/AddOrUpdateCustomer?CustomerId=' + value.customerId + '"><span class="mdi mdi-border-color" type="button" title="Edit"></span></a><a href = "#"onclick="DeleteCustomerById(' + value.customerId + ')"><span class="mdi mdi-delete-forever" type="button" title="Delete"></span></a></td>';
+                            //tbodydata += '<td> <div> <a href = "/Customer/Edit?CustomerId=' + value.customerId + '"> ' +
+                            //    '<span <i class="mdi mdi-border-color"></i> type="button" title="Edit"></span></a> ' +
+                            //    '<a href = "#" onclick="DeleteCustomerById(' + value.customerId + ')"/> ' +
+                            //    '<span<i class="mdi mdi-delete-forever"></i> type="button" title="Delete"></span></a> ' +
+                            //    '</div ></td>';
                             tbodydata += '</tr>';
                         });
 
@@ -42,7 +43,7 @@
 
 
 const GetCustomerDetailsById = async (Id) => {
-
+    debugger;
     var Response = 0;
     alert("okk")
     var data = { id : Id };
@@ -54,6 +55,7 @@ const GetCustomerDetailsById = async (Id) => {
             data: JSON.stringify(data),
             async: false,
             success: function (data) {
+                debugger;
                 if (data != null && data.statusCode == 200) {
                     $('#hdnCustomerId').val(data.resultData.customerId);
                     $('#name').val(data.resultData.customerName);
@@ -76,6 +78,9 @@ const GetCustomerDetailsById = async (Id) => {
 }
 
 function AddOrUpdateCustomer() {
+    debugger;
+
+    let frmname = $("#frmCustomer");
     var formData = new FormData();
     formData.append('customerId', $('#hdnCustomerId').val());
     formData.append('customerName', $('#name').val());
@@ -84,19 +89,22 @@ function AddOrUpdateCustomer() {
     formData.append('phoneNo', $('#phoneNo').val());
     formData.append('image', $('#image')[0].files[0]);
 
-    $.ajax({
-        type: 'POST',
-        url: "https://localhost:7011/api/User/InsertUserDetailsAsync",
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function (data) {
-            alert("Save success");
-            if (data != null && data.statusCode == 200) {
-                window.location.href = "/Customer/GridCustomer";
+    if (frmname.valid() === true) {
+        alert('step1')
+        $.ajax({
+            type: 'POST',
+            url: "https://localhost:7011/api/User/InsertUserDetailsAsync",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                alert("Save success");
+                if (data != null && data.statusCode == 200) {
+                    window.location.href = "/Customer/GridCustomer";
+                }
             }
-        }
-    });
+        });
+    }
 }
 
 
@@ -115,7 +123,7 @@ const DeleteCustomerById = async (Id) => {
             success: function (data) {
                 if (data != null && data.statusCode == 200) {
                     alert("Deletd Sucessfully");
-                    GetVehicleDetails();
+                    GetCustomerDetails();
                 }
             }
         });

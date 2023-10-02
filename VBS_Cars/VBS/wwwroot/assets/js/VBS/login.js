@@ -5,25 +5,26 @@ const Login = async () => {
     let frmname = $("#frmLogin");
    
     var data = {
-        CustomerName: $('#txtusername').val(),
-        Password: $('#txtpassword').val()
+        customerName: $('#txtusername').val(),
+        password: $('#txtpassword').val()
     }
-    if (frmname.valid() === true) {
+    
         alert("-hiiii");
         $.ajax({
             type: 'POST',
-            url: "Authenticate",
+            url: "https://localhost:7011/api/UserAuthentication/Authenticate",
+            contentType: "application/json",
             data: JSON.stringify(data),
             async: false,
             success: function (data) {
                 debugger;
                 console.log('data', data);
-                if (data != null && data.statusCode == 200) {
+                if (data != null) {
 
                     alert("save success");
-                    // document.login_form.action = "https://localhost:7170/Vehicle/AddVehicle";
-                    window.location.href = "~/Vehicle/GridVehicle";
-                    // document.getElementById("login-form").formAction = "https://localhost:7170/Vehicle/AddVehicle";
+                    
+                    window.location.href = "/Vehicle/GridVehicle";
+                    
                 }
                 else {
                     alert('Invalid User Name and Password...');
@@ -33,7 +34,7 @@ const Login = async () => {
                 alert('Invalid User Name and Password...');
             }
         });
-    }
+    
 }
 
 
@@ -42,11 +43,11 @@ const Login = async () => {
 const Register = async (Id) => {
     debugger;
     var Response = 0;
-    let frmname = $("#frmLogin");
+    let frmname = $("#frmRegister");
     alert(Id);
     var data = {
         CustomerId: Id,
-        CustomerName: $('#txtfullname').val(),
+        CustomerName: $('#txtusername').val(),
         Email: $('#txtemail').val(),
         Password: $('#txtpassword').val(),
         Address: $('#txtaddress').val(),

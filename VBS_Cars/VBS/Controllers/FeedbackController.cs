@@ -8,8 +8,9 @@ namespace VBS.Controllers
         {
             return View();
         }
-        public IActionResult AddFeedback()
+        public IActionResult AddFeedback(Int16 FeedbackId)
         {
+            ViewBag.FeedbackId = FeedbackId;
             return View();
         }
     }

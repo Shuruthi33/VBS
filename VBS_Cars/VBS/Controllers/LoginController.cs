@@ -68,7 +68,7 @@ namespace VBS.Controllers
             if (!string.IsNullOrEmpty(response.Content))
             {
                 var getData = JsonConvert.DeserializeObject<ReturnSession>(str);
-               
+                
                 var CustomerId = getData.resultData.CustomerId;
                 var CustomerName = getData.resultData.CustomerName;
                 var Email = getData.resultData.Email;

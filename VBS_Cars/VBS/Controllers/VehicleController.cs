@@ -13,8 +13,9 @@ namespace VBS.Controllers
             this.webHostEnvironment = webHostEnvironment;
         }
 
-        public IActionResult AddVehicle()
+        public IActionResult AddVehicle(Int16 VehicleId)
         {
+            ViewBag.VehicleId = VehicleId;
             return View();
         }
 

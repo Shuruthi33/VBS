@@ -2,10 +2,10 @@
     <button class="mb-1 btn vimeo" asp-controller="Customer" asp-action="AddOrUpdateCustomer">Add Customer</button>
 </div>
 
-<table class="table table-bordered">
+<table id="tblCustomer" class="table table-bordered">
     <thead>
         <tr>
-            <th scope="col">S.No</th>
+
             <th scope="col">Customer Name</th>
             <th scope="col">Email</th>
             <th scope="col">Address</th>
@@ -13,11 +13,14 @@
             <th class="text-center">Action</th>
         </tr>
     </thead>
+    <tbody>
+        <!-- Data rows will be dynamically added here -->
+    </tbody>
 </table>
 
 <script src="~/assets/js/vbs/customer.js"></script>
 <script>
- 
+
     $(document).ready(function () {
         debugger;
         GetCustomerDetails();

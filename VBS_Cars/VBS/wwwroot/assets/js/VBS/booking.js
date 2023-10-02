@@ -23,7 +23,7 @@
                             tbodydata += '<td>' + value.deliveryDate + '</td>';
                             tbodydata += '<td>' + value.cancelBooking + '</td>';
                             tbodydata += '<td>' + value.returnStatus + '</td>';
-                          
+                            tbodydata += '<td> <a href = "/AddCandidate?UserId=' + value.bookingId + '"><span class="mdi mdi-border-color" type="button" title="Edit"></span></a><a href = "#"onclick="DeleteCandidateById(' + value.bookingId + ')"><span class="mdi mdi-delete-forever" type="button" title="Delete"></span></a></td>';
                             tbodydata += '</tr>';
                         });
                         console.log(tbodydata);

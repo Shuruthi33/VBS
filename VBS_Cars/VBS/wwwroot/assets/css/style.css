@@ -2000,7 +2000,7 @@ pre code {
   border: 0;
 }
 
-.form-control rounded-0 {
+.form-control {
   display: block;
   width: 100%;
   height: calc(1.5em + 1.12rem + 2px);
@@ -2016,54 +2016,54 @@ pre code {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  .form-control rounded-0 {
+  .form-control {
     transition: none;
   }
 }
-.form-control rounded-0::-ms-expand {
+.form-control::-ms-expand {
   background-color: transparent;
   border: 0;
 }
-.form-control rounded-0:focus {
+.form-control:focus {
   color: #495057;
   background-color: #ffffff;
   border-color: #e4d6f6;
   outline: 0;
   box-shadow: 0 0 0 0.2rem transparent;
 }
-.form-control rounded-0::-moz-placeholder {
+.form-control::-moz-placeholder {
   color: #6c757d;
   opacity: 1;
 }
-.form-control rounded-0::placeholder {
+.form-control::placeholder {
   color: #6c757d;
   opacity: 1;
 }
-.form-control rounded-0:disabled, .form-control rounded-0[readonly] {
+.form-control:disabled, .form-control[readonly] {
   background-color: #f0f1f5;
   opacity: 1;
 }
 
-input[type=date].form-control rounded-0,
-input[type=time].form-control rounded-0,
-input[type=datetime-local].form-control rounded-0,
-input[type=month].form-control rounded-0 {
+input[type=date].form-control,
+input[type=time].form-control,
+input[type=datetime-local].form-control,
+input[type=month].form-control {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
 }
 
-select.form-control rounded-0:-moz-focusring {
+select.form-control:-moz-focusring {
   color: transparent;
   text-shadow: 0 0 0 #495057;
 }
-select.form-control rounded-0:focus::-ms-value {
+select.form-control:focus::-ms-value {
   color: #495057;
   background-color: #ffffff;
 }
 
-.form-control rounded-0-file,
-.form-control rounded-0-range {
+.form-control-file,
+.form-control-range {
   display: block;
   width: 100%;
 }
@@ -2090,7 +2090,7 @@ select.form-control rounded-0:focus::-ms-value {
   line-height: 1.5;
 }
 
-.form-control rounded-0-plaintext {
+.form-control-plaintext {
   display: block;
   width: 100%;
   padding: 0.56rem 0;
@@ -2102,12 +2102,12 @@ select.form-control rounded-0:focus::-ms-value {
   border: solid transparent;
   border-width: 1px 0;
 }
-.form-control rounded-0-plaintext.form-control rounded-0-sm, .form-control rounded-0-plaintext.form-control rounded-0-lg {
+.form-control-plaintext.form-control-sm, .form-control-plaintext.form-control-lg {
   padding-right: 0;
   padding-left: 0;
 }
 
-.form-control rounded-0-sm {
+.form-control-sm {
   height: calc(1.5em + 0.25rem + 2px);
   padding: 0.125rem 0.625rem;
   font-size: 0.75rem;
@@ -2115,7 +2115,7 @@ select.form-control rounded-0:focus::-ms-value {
   border-radius: 0.2rem;
 }
 
-.form-control rounded-0-lg {
+.form-control-lg {
   height: calc(1.5em + 1.3rem + 2px);
   padding: 0.65rem 1.5rem;
   font-size: 1.171875rem;
@@ -2123,11 +2123,11 @@ select.form-control rounded-0:focus::-ms-value {
   border-radius: 0.3rem;
 }
 
-select.form-control rounded-0[size], select.form-control rounded-0[multiple] {
+select.form-control[size], select.form-control[multiple] {
   height: auto;
 }
 
-textarea.form-control rounded-0 {
+textarea.form-control {
   height: auto;
 }
 
@@ -2218,7 +2218,7 @@ textarea.form-control rounded-0 {
   display: block;
 }
 
-.was-validated .form-control rounded-0:valid, .form-control rounded-0.is-valid {
+.was-validated .form-control:valid, .form-control.is-valid {
   border-color: #0acb8e;
   padding-right: calc(1.5em + 1.12rem) !important;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%230acb8e' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
@@ -2226,17 +2226,17 @@ textarea.form-control rounded-0 {
   background-position: right calc(0.375em + 0.28rem) center;
   background-size: calc(0.75em + 0.56rem) calc(0.75em + 0.56rem);
 }
-.was-validated .form-control rounded-0:valid:focus, .form-control rounded-0.is-valid:focus {
+.was-validated .form-control:valid:focus, .form-control.is-valid:focus {
   border-color: #0acb8e;
   box-shadow: 0 0 0 0.2rem rgba(10, 203, 142, 0.25);
 }
 
-.was-validated select.form-control rounded-0:valid, select.form-control rounded-0.is-valid {
+.was-validated select.form-control:valid, select.form-control.is-valid {
   padding-right: 4rem !important;
   background-position: right 2rem center;
 }
 
-.was-validated textarea.form-control rounded-0:valid, textarea.form-control rounded-0.is-valid {
+.was-validated textarea.form-control:valid, textarea.form-control.is-valid {
   padding-right: calc(1.5em + 1.12rem);
   background-position: top calc(0.375em + 0.28rem) right calc(0.375em + 0.28rem);
 }
@@ -2319,7 +2319,7 @@ textarea.form-control rounded-0 {
   display: block;
 }
 
-.was-validated .form-control rounded-0:invalid, .form-control rounded-0.is-invalid {
+.was-validated .form-control:invalid, .form-control.is-invalid {
   border-color: #fe5461;
   padding-right: calc(1.5em + 1.12rem) !important;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23fe5461' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23fe5461' stroke='none'/%3e%3c/svg%3e");
@@ -2327,17 +2327,17 @@ textarea.form-control rounded-0 {
   background-position: right calc(0.375em + 0.28rem) center;
   background-size: calc(0.75em + 0.56rem) calc(0.75em + 0.56rem);
 }
-.was-validated .form-control rounded-0:invalid:focus, .form-control rounded-0.is-invalid:focus {
+.was-validated .form-control:invalid:focus, .form-control.is-invalid:focus {
   border-color: #fe5461;
   box-shadow: 0 0 0 0.2rem rgba(254, 84, 97, 0.25);
 }
 
-.was-validated select.form-control rounded-0:invalid, select.form-control rounded-0.is-invalid {
+.was-validated select.form-control:invalid, select.form-control.is-invalid {
   padding-right: 4rem !important;
   background-position: right 2rem center;
 }
 
-.was-validated textarea.form-control rounded-0:invalid, textarea.form-control rounded-0.is-invalid {
+.was-validated textarea.form-control:invalid, textarea.form-control.is-invalid {
   padding-right: calc(1.5em + 1.12rem);
   background-position: top calc(0.375em + 0.28rem) right calc(0.375em + 0.28rem);
 }
@@ -2408,12 +2408,12 @@ textarea.form-control rounded-0 {
     align-items: center;
     margin-bottom: 0;
   }
-  .form-inline .form-control rounded-0 {
+  .form-inline .form-control {
     display: inline-block;
     width: auto;
     vertical-align: middle;
   }
-  .form-inline .form-control rounded-0-plaintext {
+  .form-inline .form-control-plaintext {
     display: inline-block;
   }
   .form-inline .input-group,
@@ -3457,8 +3457,8 @@ input[type=button].btn-block {
   align-items: stretch;
   width: 100%;
 }
-.input-group > .form-control rounded-0,
-.input-group > .form-control rounded-0-plaintext,
+.input-group > .form-control,
+.input-group > .form-control-plaintext,
 .input-group > .custom-select,
 .input-group > .custom-file {
   position: relative;
@@ -3467,21 +3467,21 @@ input[type=button].btn-block {
   min-width: 0;
   margin-bottom: 0;
 }
-.input-group > .form-control rounded-0 + .form-control rounded-0,
-.input-group > .form-control rounded-0 + .custom-select,
-.input-group > .form-control rounded-0 + .custom-file,
-.input-group > .form-control rounded-0-plaintext + .form-control rounded-0,
-.input-group > .form-control rounded-0-plaintext + .custom-select,
-.input-group > .form-control rounded-0-plaintext + .custom-file,
-.input-group > .custom-select + .form-control rounded-0,
+.input-group > .form-control + .form-control,
+.input-group > .form-control + .custom-select,
+.input-group > .form-control + .custom-file,
+.input-group > .form-control-plaintext + .form-control,
+.input-group > .form-control-plaintext + .custom-select,
+.input-group > .form-control-plaintext + .custom-file,
+.input-group > .custom-select + .form-control,
 .input-group > .custom-select + .custom-select,
 .input-group > .custom-select + .custom-file,
-.input-group > .custom-file + .form-control rounded-0,
+.input-group > .custom-file + .form-control,
 .input-group > .custom-file + .custom-select,
 .input-group > .custom-file + .custom-file {
   margin-left: -1px;
 }
-.input-group > .form-control rounded-0:focus,
+.input-group > .form-control:focus,
 .input-group > .custom-select:focus,
 .input-group > .custom-file .custom-file-input:focus ~ .custom-file-label {
   z-index: 3;
@@ -3489,7 +3489,7 @@ input[type=button].btn-block {
 .input-group > .custom-file .custom-file-input:focus {
   z-index: 4;
 }
-.input-group > .form-control rounded-0:not(:first-child),
+.input-group > .form-control:not(:first-child),
 .input-group > .custom-select:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -3506,14 +3506,14 @@ input[type=button].btn-block {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
-.input-group:not(.has-validation) > .form-control rounded-0:not(:last-child),
+.input-group:not(.has-validation) > .form-control:not(:last-child),
 .input-group:not(.has-validation) > .custom-select:not(:last-child),
 .input-group:not(.has-validation) > .custom-file:not(:last-child) .custom-file-label,
 .input-group:not(.has-validation) > .custom-file:not(:last-child) .custom-file-label::after {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.input-group.has-validation > .form-control rounded-0:nth-last-child(n+3),
+.input-group.has-validation > .form-control:nth-last-child(n+3),
 .input-group.has-validation > .custom-select:nth-last-child(n+3),
 .input-group.has-validation > .custom-file:nth-last-child(n+3) .custom-file-label,
 .input-group.has-validation > .custom-file:nth-last-child(n+3) .custom-file-label::after {
@@ -3573,12 +3573,12 @@ input[type=button].btn-block {
   margin-top: 0;
 }
 
-.input-group-lg > .form-control rounded-0:not(textarea),
+.input-group-lg > .form-control:not(textarea),
 .input-group-lg > .custom-select {
   height: calc(1.5em + 1.3rem + 2px);
 }
 
-.input-group-lg > .form-control rounded-0,
+.input-group-lg > .form-control,
 .input-group-lg > .custom-select,
 .input-group-lg > .input-group-prepend > .input-group-text,
 .input-group-lg > .input-group-append > .input-group-text,
@@ -3590,12 +3590,12 @@ input[type=button].btn-block {
   border-radius: 0.3rem;
 }
 
-.input-group-sm > .form-control rounded-0:not(textarea),
+.input-group-sm > .form-control:not(textarea),
 .input-group-sm > .custom-select {
   height: calc(1.5em + 0.25rem + 2px);
 }
 
-.input-group-sm > .form-control rounded-0,
+.input-group-sm > .form-control,
 .input-group-sm > .custom-select,
 .input-group-sm > .input-group-prepend > .input-group-text,
 .input-group-sm > .input-group-append > .input-group-text,
@@ -12449,7 +12449,7 @@ code {
     padding-right: 0.625rem;
   }
 }
-.navbar .search-form .input-group input.form-control rounded-0 {
+.navbar .search-form .input-group input.form-control {
   border: none;
   background: transparent;
   font-size: 0.9375rem;
@@ -12457,17 +12457,17 @@ code {
   display: none;
 }
 @media (min-width: 992px) {
-  .navbar .search-form .input-group input.form-control rounded-0 {
+  .navbar .search-form .input-group input.form-control {
     display: block;
     min-width: 100px;
   }
 }
 @media (min-width: 1500px) {
-  .navbar .search-form .input-group input.form-control rounded-0 {
+  .navbar .search-form .input-group input.form-control {
     min-width: 335px;
   }
 }
-.navbar .search-form .input-group input.form-control rounded-0:focus {
+.navbar .search-form .input-group input.form-control:focus {
   box-shadow: none;
 }
 .navbar .search-form .input-group #search-results-container {
@@ -12775,7 +12775,7 @@ code {
   border-color: #1d1f26;
   color: #bfc7d9;
 }
-.navbar.navbar-dark .search-form .input-group input.form-control rounded-0 {
+.navbar.navbar-dark .search-form .input-group input.form-control {
   color: #bfc7d9;
 }
 .navbar.navbar-dark input::-moz-placeholder {
@@ -12797,7 +12797,7 @@ code {
   border-color: #e5e9f2;
 }
 .navbar.navbar-light .search-form .btn,
-.navbar.navbar-light .search-form .input-group input.form-control rounded-0 {
+.navbar.navbar-light .search-form .input-group input.form-control {
   color: #8a909d;
 }
 .navbar.navbar-light .navbar-right .navbar-nav .notifications-menu .dropdown-toggle {
@@ -12840,7 +12840,7 @@ code {
   border-color: #9e6de0;
   color: #ffffff;
 }
-.navbar.navbar-primary .search-form .input-group input.form-control rounded-0 {
+.navbar.navbar-primary .search-form .input-group input.form-control {
   color: #ffffff;
 }
 .navbar.navbar-primary input::-moz-placeholder {
@@ -12859,7 +12859,7 @@ code {
   border-color: #e5e9f2;
   color: #8a909d;
 }
-.navbar.navbar-transparent .search-form .input-group input.form-control rounded-0 {
+.navbar.navbar-transparent .search-form .input-group input.form-control {
   color: #8a909d;
 }
 .navbar.navbar-transparent input::-moz-placeholder {
@@ -12922,7 +12922,7 @@ code {
 
 /*===== FORM =====*/
 /* Form Control Secondary */
-.form-control rounded-0-secondary {
+.form-control-secondary {
   background-color: #f5f6fa;
   font-size: 0.88rem;
 }
@@ -14962,12 +14962,12 @@ table.dataTable thead .sorting {
 .input-group-chat .emoticon-icon::after {
   display: none;
 }
-.input-group-chat .form-control rounded-0 {
+.input-group-chat .form-control {
   border-color: #e5e9f2;
   border-left-color: transparent;
   height: 3.125rem;
 }
-.input-group-chat .form-control rounded-0:focus {
+.input-group-chat .form-control:focus {
   box-shadow: none;
 }
 .input-group-chat .dropdown-menu.show {
@@ -15498,7 +15498,7 @@ table.dataTable thead .sorting {
 }
 
 /* Email Compose */
-.email-compose .form-control rounded-0 {
+.email-compose .form-control {
   padding: 12px 17px;
 }
 .email-compose .file-upload > input {

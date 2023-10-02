@@ -22,7 +22,7 @@
                             tbodydata += '<td>' + value.customerName + '</td>';
                             tbodydata += '<td>' + value.make + '</td>';
                             tbodydata += '<td>' + value.model + '</td>';
-                            tbodydata += '<td> <a href = "/AddCandidate?feedbackId=' + value.feedbackId + '"><span <i class="mdi mdi-border-color"></i> type="button" title="Edit"></span></a><a href = "#"onclick="DeleteCandidateById(' + value.feedbackId + ')"><span <i class="mdi mdi-delete-forever"></i> type="button" title="Delete"></span></a></td>';
+                            tbodydata += '<td> <a href = "/AddCandidate?feedbackId=' + value.feedbackId + '"><span <i class="mdi mdi-border-color"></i> type="button" title="Edit"></span></a><a href = "#"onclick="DeleteCustomerById(' + value.feedbackId + ')"><span <i class="mdi mdi-delete-forever"></i> type="button" title="Delete"></span></a></td>';
                             tbodydata += '</tr>';
                         });
                         console.log(tbodydata);

@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="form-group col-md-12 ">
                                         <label for="address">PhoneNo</label>
-                                        <input type="text" class="form-control rounded-0 input-lg" id="txtphoneno" placeholder="PhoneNo">
+                                        <input type="te" class="form-control rounded-0 input-lg" id="txtphoneno" placeholder="PhoneNo">
                                     </div> 
                                     <div class="col-md-12">
                                         <div class="d-flex justify-content-between mb-3">
@@ -77,10 +77,10 @@
 
                                         <button type="submit" class="btn btn-primary btn-pill mb-4" onclick="Register()">Sign Up</button>
 
-                                        <p>
+                                        <div class="custom-control" >
                                             Already have an account?
-                                            <a class="text-blue" href="sign-in.html" asp-controller="Login" asp-action="Login">Sign in</a>
-                                        </p>
+                                            <a class="small" href="/Login">Sign In!</a>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -90,14 +90,68 @@
             </div>
         </div>
     </div>
+     <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Include jQuery Validation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"></script>
     <script src="~/assets/js/vbs/login.js"></script>
+    
+
+    <script>
+        $(document).ready(function () {
+            $("#frmRegister").validate({
+                rules: {
+                    txtusername: {
+                        required: true
+                    },
+                    txtemail: {
+                        required: true,
+                        email: true
+                    },
+                    txtpassword: {
+                        required: true,
+                        minlength: 6
+                    },
+                    txtaddress: {
+                        required: true
+                    },
+                    txtphoneno: {
+                        required: true,
+                        digits: true
+                    },
+                    customCheck2: {
+                        required: true
+                    }
+                },
+                messages: {
+                    txtusername: "Please enter a username",
+                    txtemail: {
+                        required: "Please enter your email address",
+                        email: "Please enter a valid email address"
+                    },
+                    txtpassword: {
+                        required: "Please enter a password",
+                        minlength: "Password must be at least 6 characters long"
+                    },
+                    txtaddress: "Please enter your address",
+                    txtphoneno: {
+                        required: "Please enter your phone number",
+                        digits: "Please enter only digits"
+                    },
+                    customCheck2: "You must agree to the terms and conditions"
+                },
+                submitHandler: function (form) {
+                    // Call your function to handle form submission
+                    Register();
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
 
-<script>
-    $(document).ready(function () {
 
-        Register();
-    });
-</script>
 
