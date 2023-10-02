@@ -37,8 +37,8 @@ namespace VBS.Controllers
           //  return Ok(result);
         //}
         [HttpPost]
-        [Route("RestLogin")]
-        public RestResponse RestLogin(Models.UserCredential obj)
+        [Route("Authenticate")]
+        public RestResponse Authenticate(Models.UserCredential obj)
         {
 
             var options = new RestClientOptions("https://localhost:7011")

@@ -1,25 +1,28 @@
 ﻿// Login authentication
 const Login = async () => {
-
+    debugger;
     var Response = 0;
 
-    var login = {
+    var data = {
         CustomerName: $('#txtusername').val(),
         Password: $('#txtpassword').val()
-    };
+    }
 
-    alert("-");
+    alert("-hiiii");
     $.ajax({
         type: 'POST',
         url: "https://localhost:7011/api/UserAuthentication/Authenticate",
         contentType: "application/json",
-        data: JSON.stringify(login),
+        data: JSON.stringify(data),
         async: false,
         success: function (data) {
+            debugger;
+            console.log('data', data);
             if (data != null && data.statusCode == 200) {
+
                 alert("save success");  
               // document.login_form.action = "https://localhost:7170/Vehicle/AddVehicle";
-               //swindow.location.href = "/Vehicle/GridVehicle";
+               window.location.href = "/Vehicle/GridVehicle";
                // document.getElementById("login-form").formAction = "https://localhost:7170/Vehicle/AddVehicle";
             }
             else {
@@ -34,7 +37,9 @@ const Login = async () => {
 
 
 
+
 const Register = async (Id) => {
+    debugger;
     var Response = 0;
     alert(Id);
     var data = {
