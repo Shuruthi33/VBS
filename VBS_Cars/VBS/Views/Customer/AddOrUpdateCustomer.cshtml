@@ -1,80 +1,97 @@
 ﻿<h4 class="header-title">Customer Information</h4>
+
 <form id="frmCustomer">
     <input type="hidden" id="hdnCustomerId" value="@ViewBag.CustomerId" />
     <div class="form-group">
-        <label for="exampleFormControlInput4">Name</label>
-        <input type="text" class="form-control rounded-0" id="name" placeholder="Enter your Name">
+        <label for="name">Name</label>
+        <input type="text" class="form-control rounded-0 rounded-0" id="name" name="name"
+        placeholder="Enter your Name">
     </div>
     <div class="form-group">
-        <label for="exampleFormControlInput4">Email Address</label>
-        <input type="text" class="form-control rounded-0" id="email" placeholder="Enter your Email">
+        <label for="email">Email Address</label>
+        <input type="text" class="form-control rounded-0 rounded-0" id="email" name="email"
+        placeholder="Enter your Email">
         <span class="mt-2 d-block">We'll never share your email with anyone else.</span>
     </div>
     <div class="form-group">
-        <label for="exampleFormControlPasswor3">Phone Number</label>
-        <input type="number" class="form-control rounded-0" id="phoneNo" placeholder="Password">
+        <label for="phoneNo">Phone Number</label>
+        <input type="number" class="form-control rounded-0 rounded-0" id="phoneNo" name="phoneNo"
+        placeholder="Password">
     </div>
     <div class="form-group">
-        <label for="exampleFormControlPasswor3">Address</label>
-        <input type="text" class="form-control rounded-0" id="address" placeholder="Password">
+        <label for="address">Address</label>
+        <input type="text" class="form-control rounded-0 rounded-0" id="address" name="address"
+        placeholder="Password">
     </div>
     <div class="form-group">
-        <label for="exampleFormControlFile1">Example file input</label>
-        <input type="file" class="form-control-file" id="image">
+        <label for="image">Example file input</label>
+        <input type="file" class="form-control rounded-0-file" id="image" name="image"> 
     </div>
     <div class="form-footer">
-        <button type="submit" class="btn btn-secondary btn-pill" onclick="AddOrUpdateCustomer()">Submit</button>
-      @*  <button type="submit" class="btn btn-light btn-pill">Cancel</button>*@
+      @*  <button type="submit" onclick="AddOrUpdateCustomer()">Submit</button>
+        <button type="button" class="mb-1 btn btn-success">Success</button>*@
+        <button type="button" class="mb-1 btn btn-success" onclick="AddOrUpdateCustomer()">Save</button>
+        @*  <button type="submit" class="btn btn-light btn-pill">Cancel</button>*@
     </div>
 
 </form>
 
 <script src="~/assets/js/vbs/customer.js"></script>
+<!-- Include jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+
+<!-- Include jQuery Validation -->
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"></script>*@
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
 
 <script>
-$(document).ready(function(){
-        $('#frmCustomer').validate({
-        rules: {
-            name: {
-                required: true,
-                minlength: 2 // Minimum length of 2 characters
+    $(document).ready(function () {
+        $("#frmCustomer").validate({
+            rules: {
+                name: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                phoneNo: {
+                    required: true,
+                    number: true
+                },
+                address: {
+                    required: true
+                },
+                image: {
+                    required: true,
+                    accept: "image/*" // Make sure the uploaded file is an image
+                }
             },
-            email: {
-                required: true,
-                email: true
+            messages: {
+                name: "Please enter your name",
+
+                email: {
+                    required: "Please enter your email address",
+                    email: "Please enter a valid email address"
+                },
+                phoneNo: {
+                    required: "Please enter your phone number",
+                    number: "Please enter a valid phone number"
+                },
+                address: "Please enter your address",
+                image: {
+                    required: "Please upload an image",
+                    accept: "Please upload a valid image file"
+                }
             },
-            phoneNo: {
-                required: true,
-                number: true
-            },
-            address: {
-                required: true
+            submitHandler: function (form) {
+                AddOrUpdateCustomer(); // Call your function to handle form submission
             }
-        },
-        messages: {
-            name: {
-                required: "Please enter your name",
-                minlength: "Name must be at least 2 characters long"
-            },
-            email: {
-                required: "Please enter your email address",
-                email: "Please enter a valid email address"
-            },
-            phoneNo: {
-                required: "Please enter your phone number",
-                number: "Please enter a valid phone number"
-            },
-            address: {
-                required: "Please enter your address"
-            }
-        },
-        submitHandler: function(form) {
-            AddOrUpdateCustomer();
-        }
+        });
     });
-});
+
 
 </script>
 

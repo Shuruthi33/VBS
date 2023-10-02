@@ -1,7 +1,11 @@
-﻿<table class="table table-bordered">
+﻿<div class="form-footer">
+    <button class="mb-1 btn vimeo" asp-controller="Customer" asp-action="AddOrUpdateCustomer">Add Customer</button>
+</div>
+
+<table class="table table-bordered">
     <thead>
         <tr>
-      
+            <th scope="col">S.No</th>
             <th scope="col">Customer Name</th>
             <th scope="col">Email</th>
             <th scope="col">Address</th>
@@ -11,7 +15,7 @@
     </thead>
 </table>
 
-<script src="~/assets/js/custom.js"></script>
+<script src="~/assets/js/vbs/customer.js"></script>
 <script>
  
     $(document).ready(function () {

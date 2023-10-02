@@ -32,6 +32,8 @@
     <![endif]-->
     <script src="~/assets/plugins/nprogress/nprogress.js"></script>
 
+    <script src="~/assets/plugins/jquery/jquery.min.js"></script>
+
 </head>
 <body class="navbar-fixed sidebar-fixed" id="body">
     <script>
@@ -71,9 +73,9 @@
                                         <!-- sidebar menu -->
                                         <ul class="nav sidebar-inner" id="sidebar-menu">
 
-                                            <li>
+                                          @*  <li>
                                                 <a class="sidenav-item-link" asp-controller="" asp-action="">
-                                                    <i class="mdi mdi-phone"></i>
+                                                    <i class="mdi mdi-home-minus"></i>
                                                     <span class="nav-text">Home</span>
                                                 </a>
                                             </li>
@@ -90,7 +92,7 @@
                                                     <span class="nav-text">Contant</span>
                                                 </a>
                                             </li>
-
+*@
 
                                             <li class="section-title">Menu</li>
 
@@ -110,14 +112,15 @@
 
                                             <li>
                                                 <a class="sidenav-item-link" asp-controller="Booking" asp-action="GridBooking">
-                                                    <i class="mdi mdi-card-text-outline"></i>
+                                                    <i class="mdi mdi-car-key"></i>
+                                                   
                                                     <span class="nav-text">Booking</span>
                                                 </a>
                                             </li>
 
                                             <li>
                                                 <a class="sidenav-item-link" asp-controller="Feedback" asp-action="GridFeedback">
-                                                    <i class="mdi mdi-airplane"></i>
+                                                    <i class="mdi mdi-card-text-outline"></i>
                                                     <span class="nav-text">FeedBack</span>
                                                 </a>
                                             </li>
@@ -272,7 +275,7 @@
         <div class="card-body">
 
             <div class="mb-4">
-                <input type="text" class="form-control form-control-lg form-control-secondary rounded-0" placeholder="Search contacts...">
+                <input type="text" class="form-control rounded-0 form-control rounded-0-lg form-control rounded-0-secondary rounded-0" placeholder="Search contacts...">
             </div>
 
             <div class="media media-sm">

@@ -14,6 +14,7 @@
                         var tbodydata = '';
                         $.each(data.resultData, function (key, value) {
                             tbodydata += '<tr>';
+                            tbodydata += '<td>' + value.customerId + '</td>';
                             tbodydata += '<td>' + value.customerName + '</td>';
                             tbodydata += '<td>' + value.email + '</td>';
                             tbodydata += '<td>' + value.address + '</td>';

@@ -8,5 +8,9 @@ namespace VBS.Controllers
         {
             return View();
         }
+        public IActionResult AddBooking()
+        {
+            return View();
+        }
     }
 }

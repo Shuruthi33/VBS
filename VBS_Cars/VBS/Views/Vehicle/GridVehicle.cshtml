@@ -1,4 +1,8 @@
-﻿<div class="card-body">
+﻿<div class="form-footer">
+    <button class="mb-1 btn vimeo" asp-controller="Vehicle" asp-action="AddVehicle">Add Vehicle</button>
+</div>
+
+<div class="card-body">
     <h4 class="header-title">Progress Table</h4>
     <div class="single-table">
         <div class="table-responsive" id="tblVehicle">
@@ -7,6 +11,7 @@
                 <thead class="text-uppercase">
                     <tr>
 
+                        <th scope="col">S.NO</th>
                         <th scope="col">Image</th>
                         <th scope="col">Make</th>
                         <th scope="col">Model</th>
@@ -28,8 +33,7 @@
                         <th scope="col">RTO</th>
                         <th scope="col">Insurance</th>
                         <th scope="col">Availability</th>
-                      
-                    </tr>
+                      </tr>
                 </thead>
 
             </table>

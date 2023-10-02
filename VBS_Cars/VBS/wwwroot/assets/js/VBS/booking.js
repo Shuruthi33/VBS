@@ -4,10 +4,10 @@
     try {
         await $.ajax({
             type: 'GET',
-            url: "https://localhost:7138/api/User/GetUserDetails",
+            url: "https://localhost:7011/api/Booking/GetBookingDetailsAsync",
             contentType: "application/json",
             data: {},
-            async: false,
+            async : true,
             success: function (data) {
                 if (data != null && data.statusCode == 200) {
                     if (data.resultData.length > 0) {
@@ -50,7 +50,7 @@ const GetBookingDetailsById = async (Id) => {
     try {
         await $.ajax({
             type: 'GET',
-            url: "https://localhost:7138/api/User/GetUserDetailsByIdAsync?id=" + Id,
+            url: "https://localhost:7011/api/Booking/GetBookingDetailsByIdAsync?id=" + Id,
             contentType: "application/json",
             data: { id: Id },
             async: false,
@@ -66,7 +66,6 @@ const GetBookingDetailsById = async (Id) => {
                     $('#bookingDate').val(data.resultData.bookingDate);
                     $('#deliveryDate').val(data.resultData.deliveryDate);
                     $('#cancelBooking').val(data.resultData.cancelBooking);
-                    $('#specialization').val(data.resultData.specialization);
                     $('returnStatus').val(data.resultData.returnStatus);
                 }
             }
@@ -82,25 +81,21 @@ const GetBookingDetailsById = async (Id) => {
 
 const SaveOrUpdateBooking = async (Id) => {
     var Response = 0;
-    // alert(Id);
+     alert(Id);
     var data = {
-        UserId: Id,
-        UserName: $('#userName').val(),
-        Email: $('#email').val(),
-        Address: $('#address').val(),
-        DOB: new Date($('#dob').val()),
-        GenderId: $('#genderId').val(),
-        MobileNo: $('#mobileNo').val(),
-        Qualification: $('#qualification').val(),
-        Specialization: $('#specialization').val(),
-
-
+        bookingId: bookingId,
+        customerId: $('#customerId').val(),
+        vehicleId: $('#vehicleId').val(),
+        bookingDate: $('#bookingDate').val(),
+        deliveryDate: $('#deliveryDate').val(),
+        cancelBooking: $('#cancelBooking').val(),
+        returnStatus: $('#returnStatus').val(),
     }
     console.log('data', data);
     alert()
     $.ajax({
         type: 'POST',
-        url: "https://localhost:7138/api/User/InsertUserDetailsAsync",
+        url: "https://localhost:7011/api/Booking/SaveBookingDetailsAsync",
         contentType: "application/json",
         data: JSON.stringify(data),
         async: false,
@@ -108,8 +103,35 @@ const SaveOrUpdateBooking = async (Id) => {
             console.log('data', data);
             alert("save success")
             if (data != null && data.statusCode == 200) {
-                window.location.href = "/Administrations/Administrations";
+                window.location.href = "/Booking/GridBooking";
             }
         }
     });
+}
+
+const DeleteBookingById = async (Id) => {
+    var Response = 0;
+
+    alert("ok");
+    try {
+        await $.ajax({
+            type: 'DELETE',
+            url: 'https://localhost:7011/api/Booking/DeleteBookingDetailsAsync' + Id + '',
+            contentType: "application/json",
+            data: { id: Id },
+            async: false,
+            success: function (data) {
+                if (data != null && data.statusCode == 200) {
+                    alert("Deletd Sucessfully");
+                    GetVehicleDetails();
+                }
+            }
+        });
+    }
+    catch (err) {
+        await console.log(err);
+    }
+
+    return Response;
+
 }

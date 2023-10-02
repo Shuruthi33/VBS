@@ -1,0 +1,16 @@
+﻿
+<h4 class="header-title"> Give Feeback </h4>
+<form id="frmBooking">
+    <input type="hidden" id="hdnFeedbackId" value="@ViewBag.FeedbackId"/>
+    <div class="form-group">
+        <label for="deliveryDate">Rating</label>
+        <input type="date" class="form-control rounded-0 rounded-0" id="deliveryDate">
+    </div>
+    <div class="form-group">
+        <label for="getfeedback">Give Feedback</label>
+        <textarea type="checkbox" class="form-check-input" id="getfeedback"></textarea>
+    </div>
+    <div class="form-footer">
+        <button type="button" onclick="SaveOrUpdateBooking()">Submit</button>
+    </div>
+</form>
