@@ -9,8 +9,9 @@ namespace VBS.Controllers
             return View();
         }
 
-        public IActionResult AddOrUpdateCustomer()
+        public IActionResult AddOrUpdateCustomer(Int16 CustomerId = 0)
         {
+            ViewBag.CustomerId = CustomerId;
             return View();
         }
         //public IActionResult Edit()

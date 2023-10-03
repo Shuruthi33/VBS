@@ -1,58 +1,102 @@
 ﻿const GetVehicleDetails = async () => {
-        try {
-            var Response = await $.ajax({
-                type: 'GET',
-                url: "https://localhost:7011/api/Vehicle/GetVehicleDetailsAsync",
-                contentType: "application/json",
-                headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-                data: {},
-                async: false,
-                success: function (data) {
-                    if (data != null && data.statusCode == 200) {
-                        if (data.resultData.length > 0) {
-                            var tbodydata = '';
-                            $.each(data.resultData, function (key, value) {
-                                tbodydata += '<tr>';
+    try {
+        var Response = await $.ajax({
+            type: 'GET',
+            url: "https://localhost:7011/api/Vehicle/GetVehicleDetailsAsync",
+            contentType: "application/json",
+          //  headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+            data: {},
+            async: false,
+            success: function (data) {
+                if (data != null && data.statusCode == 200) {
+                    if (data.resultData.length > 0) {
+                        var tbodydata = '';
+                        $.each(data.resultData, function (key, value) {
+                            tbodydata += '<tr>';
+                            tbodydata += '<td> <a href = "/Vehicle/AddVehicle?VehicleId=' + value.vehicleId + '"><span class="mdi mdi-border-color" type="button" title="Edit"></span></a><a href = "#"onclick="DeleteVehicleById(' + value.vehicleId + ')"><span class="mdi mdi-delete-forever" type="button" title="Delete"></span></a></td>';
 
-                                tbodydata += '<td>' + value.make + '</td>';
-                                tbodydata += '<td>' + value.model + '</td>';
-                                tbodydata += '<td>' + value.year + '</td>';
-                                tbodydata += '<td>' + value.price + '</td>';
-                                tbodydata += '<td>' + value.mileage + '</td>';
-                                tbodydata += '<td>' + value.licensePlate + '</td>';
-                                tbodydata += '<td>' + value.colour + '</td>';
-                                tbodydata += '<td>' + value.vin + '</td>';
-                                tbodydata += '<td>' + value.engineType + '</td>';
-                                tbodydata += '<td>' + value.engineSize + '</td>';
-                                tbodydata += '<td>' + value.fuelType + '</td>';
-                                tbodydata += '<td>' + value.fuelTank + '</td>';
-                                tbodydata += '<td>' + value.seatingCapacity + '</td>';
-                                tbodydata += '<td>' + value.condition + '</td>';
-                                tbodydata += '<td>' + value.features + '</td>';
-                                tbodydata += '<td>' + value.versionName + '</td>';
-                                tbodydata += '<td>' + value.exShowroomPrice + '</td>';
-                                tbodydata += '<td>' + value.rto + '</td>';
-                                tbodydata += '<td>' + value.insurance + '</td>';
-                                tbodydata += '<td>' + value.availability + '</td>';
-                                tbodydata += '<td> <a href = "/Vehicle/AddVehicle?VehicleId=' + value.vehicleId + '"><span class="mdi mdi-border-color" type="button" title="Edit"></span></a><a href = "#"onclick="DeleteVehicleById(' + value.vehicleId + ')"><span class="mdi mdi-delete-forever" type="button" title="Delete"></span></a></td>';
-                                tbodydata += '</tr>';
-                            });
+                            tbodydata += '<td>' + value.make + '</td>';
+                            tbodydata += '<td>' + value.model + '</td>';
+                            tbodydata += '<td>' + value.year + '</td>';
+                            tbodydata += '<td>' + value.price + '</td>';
+                            tbodydata += '<td>' + value.mileage + '</td>';
+                            tbodydata += '<td>' + value.licensePlate + '</td>';
+                            tbodydata += '<td>' + value.colour + '</td>';
+                            tbodydata += '<td>' + value.vin + '</td>';
+                            tbodydata += '<td>' + value.engineType + '</td>';
+                            tbodydata += '<td>' + value.engineSize + '</td>';
+                            tbodydata += '<td>' + value.fuelType + '</td>';
+                            tbodydata += '<td>' + value.fuelTank + '</td>';
+                            tbodydata += '<td>' + value.seatingCapacity + '</td>';
+                            tbodydata += '<td>' + value.condition + '</td>';
+                            tbodydata += '<td>' + value.features + '</td>';
+                            tbodydata += '<td>' + value.versionName + '</td>';
+                            tbodydata += '<td>' + value.exShowroomPrice + '</td>';
+                            tbodydata += '<td>' + value.rto + '</td>';
+                            tbodydata += '<td>' + value.insurance + '</td>';
+                            tbodydata += '<td>' + value.availability + '</td>';
+                            tbodydata += '</tr>';
+                        });
 
-                            $("#tblVehicle tbody").empty();
-                            $("#tblVehicle tbody").append(tbodydata);
-                        }
+                        $("#tblVehicle tbody").empty();
+                        $("#tblVehicle tbody").append(tbodydata);
                     }
                 }
-            });
+            }
+        });
 
-            return Response;
-        } catch (err) {
-            console.log(err);
-           
-            return Response; // or throw an error
-        }
+        return Response;
+    } catch (err) {
+        console.log(err);
+
+        return Response; // or throw an error
     }
-GetVehicleDetails();
+}
+
+const GetVehicleDetailsForBooking = async () => {
+    try {
+        var Response = await $.ajax({
+            type: 'GET',
+            url: "https://localhost:7011/api/Vehicle/GetVehicleDetailsAsync",
+            contentType: "application/json",
+            //headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+            data: {},
+            async: false,
+            success: function (data) {
+                if (data != null && data.statusCode == 200) {
+                    if (data.resultData.length > 0) {
+                        var tbodydata = '';
+                        $.each(data.resultData, function (key, value) {
+                            var cardData = '<div class="card mb-4">';
+                            cardData += '<img src="~/assets/images/elements/' + value.make + '.jpeg" />';
+                            cardData += '<div class="card-body">';
+                            cardData += '<h5 class="card-title">' + value.make + ' ' + value.model + '</h5>';
+                            cardData += '<p class="card-text">' + value.description + '</p>';
+                            cardData += '<ul class="list-group list-group-flush">';
+                            cardData += '<li class="list-group-item">Engine: ' + value.engineSize + '</li>';
+                            cardData += '<li class="list-group-item">Transmission: ' + value.transmission + '</li>';
+                            cardData += '<li class="list-group-item">Fuel Type: ' + value.fuelType + '</li>';
+                            cardData += '<li class="list-group-item">Price: $' + value.price + '</li>';
+                            cardData += '</ul>';
+                            cardData += '<a href="/Vehicle/GirdVehicle" class="btn btn-outline-primary btn-pill mt-3"> View More</a>';
+                            cardData += '</div></div>';
+
+                            $("#cardContainer").append(cardData); // Assuming you have a container with id "cardContainer"
+                        });
+
+                    }
+                }
+            }
+        });
+
+        return Response;
+    } catch (err) {
+        console.log(err);
+
+        return Response; // or throw an error
+    }
+}
+
 const GetVehicleDetailsById = async (Id) => {
 
     var Response = 0;
@@ -161,7 +205,7 @@ const GetVehicleDetailsById = async (Id) => {
 //    } catch (err) {
 //        console.log(err);
 //    }
-       
+
 //}
 
 const DeleteVehicleById = async (Id) => {
@@ -190,6 +234,4 @@ const DeleteVehicleById = async (Id) => {
     return Response;
 
 }
-
-
 

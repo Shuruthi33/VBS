@@ -1,5 +1,7 @@
 ﻿const GetBookingDetails = async () => {
     var Response;
+    debugger;
+    alert("okk")
 
     try {
         await $.ajax({
@@ -7,13 +9,15 @@
             url: "https://localhost:7011/api/Booking/GetBookingDetailsAsync",
             contentType: "application/json",
             data: {},
-            async : true,
+            async: false,
+       
             success: function (data) {
                 if (data != null && data.statusCode == 200) {
                     if (data.resultData.length > 0) {
                         var tbodydata = '';
                         $.each(data.resultData, function (key, value) {
                             tbodydata += '<tr>';
+                            tbodydata += '<td> <a href = "/AddCandidate?UserId=' + value.bookingId + '"><span class="mdi mdi-border-color" type="button" title="Edit"></span></a><a href = "#"onclick="DeleteCandidateById(' + value.bookingId + ')"><span class="mdi mdi-delete-forever" type="button" title="Delete"></span></a></td>';
                             tbodydata += '<td>' + value.customerName + '</td>';
                             tbodydata += '<td>' + value.make + '</td>';
                             tbodydata += '<td>' + value.model + '</td>';
@@ -23,7 +27,7 @@
                             tbodydata += '<td>' + value.deliveryDate + '</td>';
                             tbodydata += '<td>' + value.cancelBooking + '</td>';
                             tbodydata += '<td>' + value.returnStatus + '</td>';
-                            tbodydata += '<td> <a href = "/AddCandidate?UserId=' + value.bookingId + '"><span class="mdi mdi-border-color" type="button" title="Edit"></span></a><a href = "#"onclick="DeleteCandidateById(' + value.bookingId + ')"><span class="mdi mdi-delete-forever" type="button" title="Delete"></span></a></td>';
+                           
                             tbodydata += '</tr>';
                         });
                         console.log(tbodydata);
@@ -83,7 +87,7 @@ const SaveOrUpdateBooking = async (Id) => {
     var Response = 0;
      alert(Id);
     var data = {
-        bookingId: bookingId,
+        bookingId: Id,
         customerId: $('#customerId').val(),
         vehicleId: $('#vehicleId').val(),
         bookingDate: $('#bookingDate').val(),

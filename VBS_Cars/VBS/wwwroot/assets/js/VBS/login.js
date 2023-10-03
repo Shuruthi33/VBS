@@ -41,42 +41,115 @@ const Login = async () => {
 
 
 
-const Register = async (Id) => {
+//const Register = async () => {
+//    debugger;
+
+//    var data = {
+//        CustomerId: Id,
+//        CustomerName: $('#txtusername').val(),
+//        Email: $('#txtemail').val(),
+//        Password: $('#txtpassword').val(),
+//        Address: $('#txtaddress').val(),
+//        PhoneNo: $('#txtphoneno').val()
+//    }
+//        console.log('data', data);
+//        alert("OKKK");
+//        $.ajax({
+//            type: 'POST',
+//            url: 'https://localhost:7011/api/User/SaveUserDetailsAsync',
+//            contentType: "application/json",
+//            data: JSON.stringify(data),
+//            async: true,
+//            success: function (data) {
+//                alert("SUCESS");
+//                console.log('data', data);
+
+//                if (data != null && data.statusCode == 200) {
+//                    alert("save success")
+//                    window.location.href = "/Login/Login";
+//                }
+//            },
+//            error: function (error) {
+//                alert('server error');
+//            }
+//        });
+
+
+//}
+
+
+//const Register = async () => {
+//    debugger;
+
+//    var data = {
+//        CustomerId: Id, 
+//        CustomerName: $('#txtuserName').val(),
+//        Email: $('#txtemail').val(),
+//        Password: $('#txtpassword').val(),
+//        Address: $('#txtaddress').val(),
+//        PhoneNo: $('#txtphoneno').val()
+//    }
+
+//    console.log('data', data);
+
+//    $.ajax({
+//        type: 'POST',
+//        url: "https://localhost:7011/api/User/SaveUserDetailsAsync",
+//        contentType: "application/json",
+//        data: JSON.stringify(data),
+//        async: true,
+//        success: function (data) {
+//            alert("SUCCESS");
+//            console.log('data', data);
+
+//            if (data != null && data.statusCode == 200) {
+//                alert("save success")
+//                window.location.href = "/Login/Login";
+//            }
+//        },
+//        error: function (error) {
+//            alert('server error');
+//        }
+//    });
+//}
+
+const Register = async () => {
     debugger;
     var Response = 0;
-    alert(Id);
     var data = {
-        CustomerId: Id,
-        CustomerName: $('#txtusername').val(),
+        CustomerId: 0,
+        CustomerName: $('#txtuserName').val(),
         Email: $('#txtemail').val(),
-        Password: $('#txtpassword').val(),
+        Password: $('#txtaddress').val(),
         Address: $('#txtaddress').val(),
-        PhoneNo: $('#txtphoneno').val()
+        PhoneNo: $('#txtphoneno').val(),
+
+
     }
-        console.log('data', data);
-        alert("OKKK");
-        $.ajax({
-            type: 'POST',
-            url: "https://localhost:7011/api/User/SaveUserDetailsAsync",
-            contentType: "application/json",
-            data: JSON.stringify(data),
-            async: true,
-            success: function (data) {
-                alert("SUCESS");
-                console.log('data', data);
+    console.log('data', data);
+    alert("ULLA POO")
+    $.ajax({
+        type: 'POST',
+        url: "https://localhost:7011/api/User/SaveUserDetailsAsync",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        async: false,
+        success: function (data) {
+            console.log('data', data);
+            alert("save success")
+            if (data != null && data.statusCode == 200) {
+                alert("Registration Success")
 
-                if (data != null && data.statusCode == 200) {
-                    alert("save success")
-                    window.location.href = "/Login/Login";
-                }
-            },
-            error: function (error) {
-                alert('server error');
+                debugger;
+               window.location.href = "/Login";
+
+               // window.location.href = "/Vehicle/ViewVehicle";
+
             }
-        });
-
-    
+        }
+    });
 }
+
 
 
 
