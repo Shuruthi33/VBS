@@ -52,10 +52,6 @@
             return Response; // or throw an error
         }
     }
-
-
-
-
 GetVehicleDetails();
 const GetVehicleDetailsById = async (Id) => {
 

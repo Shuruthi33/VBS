@@ -4,25 +4,25 @@
     <br />
 
     <form id="frmCustomer">
-        <input type="hidden" id="hdnCustomerId" value="@ViewBag.CustomerId" />
+        <input type="hidden" id="hdnCustomerId" value="@ViewBag.CustomerId"/>
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your Name">
+                    <input type="text" class="form-control" id="name" name="Name" placeholder="Enter your Name">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input type="text" class="form-control" id="email" name="email" placeholder="Enter your Email">
+                    <input type="text" class="form-control" id="email" name="Email" placeholder="Enter your Email">
                     <span class="mt-2 d-block">We'll never share your email with anyone else.</span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="phoneNo">Phone Number</label>
-                    <input type="text" class="form-control" id="phoneNo" name="phoneNo" placeholder="Phone Number">
+                    <input type="text" class="form-control" id="phoneNo" name="PhoneNo" placeholder="Phone Number">
                 </div>
             </div>
         </div>
@@ -31,13 +31,13 @@
             <div class="col-md-8">
                 <div class="form-group">
                     <label for="address">Address</label>
-                    <textarea type="text" class="form-control" id="address" name="address" placeholder="Address"></textarea>
+                    <textarea type="text" class="form-control" id="address" name="Address" placeholder="Address"></textarea>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="image">Example file input</label>
-                    <input type="file" class="form-control" id="image" name="image">
+                    <input type="file" class="form-control" id="image" name="Image">
                 </div>
             </div>
         </div>
@@ -54,6 +54,8 @@
     </form>
 </div>
 
+<script src="~/assets/js/vbs/customer.js"></script>
+
 <script>
     $(document).ready(function () {
 
@@ -62,44 +64,43 @@
         }
     });
 
-</script>
+    $('#frmCustomer').validate({
+        errorElement: 'span',
+        errorClass: 'help-block help-block-error',
+        onkeyup: function (element) {
 
-@*<!-- Include jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-*@
-<!-- Include jQuery Validation -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-
-<script src="~/assets/js/vbs/customer.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#frmCustomer").validate({
-            rules: {
-                name: {
-                    required: true
-                },
-                email: {
-                    required: true,
-                    email: true
-                },
-                phoneNo: {
-                    required: true,
-                    number: true
-                },
-                address: {
-                    required: true
-                },
-                image: {
-                    required: true,
-                    accept: "image/*" // Make sure the uploaded file is an image
-                }
+            $(element).valid();
+        },
+        focusInvalid: true,
+        highlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        unhighlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        success: function (label) {
+            label.addClass('valid').closest('.form-group').removeClass('has-error');
+        },
+        rules: {
+            Name: {
+                required: true
             },
-            messages: {
-                name: "Please enter your name",
+            Email: {
+                required: true
+            },
+            PhoneNo: {
+                required: true
+            },
+            Address: {
+                required: true
+            },
+            Image: {
+                required: true
+            },
+             messages: {
+                Name: "Please enter your name",
 
-                email: {
+                Email: {
                     required: "Please enter your email address",
                     email: "Please enter a valid email address"
                 },
@@ -108,29 +109,19 @@
                     number: "Please enter a valid phone number"
                 },
 
-                address: "Please enter your address",
+                Address: "Please enter your address",
 
-                image: {
+                Image: {
                     required: "Please upload an image",
                     accept: "Please upload a valid image file"
                 }
-            },
-            errorElement: 'span',
-            errorPlacement: function (error, element) {
-                error.addClass('invalid-feedback');
-                element.closest('.form-group').append(error);
-            },
-            highlight: function (element, errorClass, validClass) {
-                $(element).addClass('is-invalid');
-            },
-            unhighlight: function (element, errorClass, validClass) {
-                $(element).removeClass('is-invalid');
-            }
-        });
+        }
     });
 
-
 </script>
+
+
+
 
 
 

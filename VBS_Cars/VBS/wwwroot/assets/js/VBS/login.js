@@ -2,13 +2,14 @@
 const Login = async () => {
     debugger;
     var Response = 0;
-    let frmname = $("#frmLogin");
+    let frmname = $("#signin-form");
    
     var data = {
         customerName: $('#txtusername').val(),
         password: $('#txtpassword').val()
     }
-    
+    if (frmname.valid() === true) {
+
         alert("-hiiii");
         $.ajax({
             type: 'POST',
@@ -22,9 +23,9 @@ const Login = async () => {
                 if (data != null) {
 
                     alert("save success");
-                    
+
                     window.location.href = "/Vehicle/ViewVehicle";
-                    
+
                 }
                 else {
                     alert('Invalid User Name and Password...');
@@ -34,7 +35,7 @@ const Login = async () => {
                 alert('Invalid User Name and Password...');
             }
         });
-    
+    }
 }
 
 

@@ -1,63 +1,16 @@
-﻿@*<div class="col-md-12">
-    <a href="Customer/AddOrUpdateCustomer" class="mb-1 btn vimeo" style="float:right">Add Customer</a>
-</div>
-<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
-
-<h4 class="header-title">Customer Details</h4>
-
-<table id="tblCustomer" class="table table-bordered">
-    <thead>
-        <tr>
-            <th scope="col">Customer Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Address</th>
-            <th scope="col">Phone No</th>
-            <th class="text-center">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
-<script src="~/assets/plugins/jquery/jquery.min.js"></script>
-<script src="~/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="~/assets/plugins/simplebar/simplebar.min.js"></script>
-<script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
-
-<script src="~/assets/plugins/apexcharts/apexcharts.js"></script>
-
-<script src="~/assets/plugins/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
-
-<script src="~/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
-<script src="~/assets/plugins/jvectormap/jquery-jvectormap-world-mill.js"></script>
-<script src="~/assets/plugins/jvectormap/jquery-jvectormap-us-aea.js"></script>
-
-<script src="~/assets/plugins/daterangepicker/moment.min.js"></script>
-<script src="~/assets/plugins/daterangepicker/daterangepicker.js"></script>
-
-<script src="~/assets/plugins/jquery/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-
-<script src="~/assets/js/vbs/customer.js"></script>
-<script>
-    //$(document).ready(function () {
-    //    GetCustomerDetails();
-    //});
-</script>*@
-
-<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+﻿<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 
 <h3>User Details</h3>
 
 <div class="row">
 	<div class="col-md-12">
-		<a href="AddorUpdateUser" class="btn btn-primary" style="float:right">Add User</a>
+        <a href="AddOrUpdateCustomer" class="btn btn-primary" style="float:right">Add User</a>
 
 	</div>
+
 	<div class="col-md-12 mt-2">
 		<div style="overflow-x: auto;">
-			<table id="tblCustomer" class="table table-bordered">
+				<table id="tblCustomer" class="table table-hover progress-table text-center">
 				<thead>
 					<tr>
                         <th scope="col">Customer Name</th>
@@ -73,9 +26,28 @@
 		</div>
 	</div>
 </div>
+<script src="~/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/plugins/simplebar/simplebar.min.js"></script>
+<script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
+
+<script src="~/assets/plugins/apexcharts/apexcharts.js"></script>
+
+<script src="~/assets/plugins/datatables/datatables-1.10.18/js/jquery.datatables.min.js"></script>
+
+<script src="~/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
+<script src="~/assets/plugins/jvectormap/jquery-jvectormap-world-mill.js"></script>
+<script src="~/assets/plugins/jvectormap/jquery-jvectormap-us-aea.js"></script>
+
+<script src="~/assets/plugins/daterangepicker/moment.min.js"></script>
+<script src="~/assets/plugins/daterangepicker/daterangepicker.js"></script>
+
+<script src="~/assets/js/vbs/login.js"></script>
+<link href="~/assets/css/style.css" rel="stylesheet" />
+<script src="~/assets/plugins/jquery/jquery.min.js"></script>
 <script src="~/assets/js/vbs/customer.js"></script>
 
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
 <script>
 	$(document).ready(function () {
         GetCustomerDetails();
