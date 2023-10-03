@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         <div class="card-body px-5 pb-5 pt-0">
-                            <h4 class="text-dark text-center mb-5">Sign Up</h4>
+                            <h4 class="text-dark text-center mb-5">Registration</h4>
                             <form id="frmRegister">
                                 <div class="row">
                                     <div class="form-group col-md-12 mb-4">
@@ -50,7 +50,7 @@
                                         <input type="text" class="form-control rounded-0 input-lg" id="txtusername" aria-describedby="nameHelp" placeholder="UserName">
                                     </div>
                                     <div class="form-group col-md-12 mb-4">
-                                        <label for="Email">Address</label>
+                                        <label for="Email">Email</label>
                                         <input type="email" class="form-control rounded-0 input-lg" id="txtemail" aria-describedby="emailHelp" placeholder="Email">
                                     </div>
                                     <div class="form-group col-md-12 ">
@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="form-group col-md-12 ">
                                         <label for="address">PhoneNo</label>
-                                        <input type="te" class="form-control rounded-0 input-lg" id="txtphoneno" placeholder="PhoneNo">
+                                        <input type="text" class="form-control rounded-0 input-lg" id="txtphoneno" placeholder="PhoneNo">
                                     </div> 
                                     <div class="col-md-12">
                                         <div class="d-flex justify-content-between mb-3">
@@ -98,7 +98,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"></script>
     <script src="~/assets/js/vbs/login.js"></script>
     
-
+@*
     <script>
         $(document).ready(function () {
             $("#frmRegister").validate({
@@ -142,13 +142,13 @@
                     },
                     customCheck2: "You must agree to the terms and conditions"
                 },
-                submitHandler: function (form) {
-                    // Call your function to handle form submission
+                submitHandler: function (frmRegister) {
+                   
                     Register();
                 }
             });
         });
-    </script>
+    </script>*@
 
 </body>
 </html>

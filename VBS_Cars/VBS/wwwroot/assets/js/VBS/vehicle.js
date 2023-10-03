@@ -13,6 +13,7 @@
                             var tbodydata = '';
                             $.each(data.resultData, function (key, value) {
                                 tbodydata += '<tr>';
+
                                 tbodydata += '<td>' + value.make + '</td>';
                                 tbodydata += '<td>' + value.model + '</td>';
                                 tbodydata += '<td>' + value.year + '</td>';
@@ -33,6 +34,8 @@
                                 tbodydata += '<td>' + value.rto + '</td>';
                                 tbodydata += '<td>' + value.insurance + '</td>';
                                 tbodydata += '<td>' + value.availability + '</td>';
+                                tbodydata += '<td> <a href = "/Vehicle/AddVehicle?VehicleId=' + value.vehicleId + '"><span class="mdi mdi-border-color" type="button" title="Edit"></span></a><a href = "#"onclick="DeleteVehicleById(' + value.vehicleId + ')"><span class="mdi mdi-delete-forever" type="button" title="Delete"></span></a></td>';
+                                tbodydata += '</tr>';
                             });
 
                             $("#tblVehicle tbody").empty();

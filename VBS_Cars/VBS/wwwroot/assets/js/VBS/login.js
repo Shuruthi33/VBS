@@ -23,7 +23,7 @@ const Login = async () => {
 
                     alert("save success");
                     
-                    window.location.href = "/Vehicle/GridVehicle";
+                    window.location.href = "/Vehicle/ViewVehicle";
                     
                 }
                 else {
@@ -43,7 +43,6 @@ const Login = async () => {
 const Register = async (Id) => {
     debugger;
     var Response = 0;
-    let frmname = $("#frmRegister");
     alert(Id);
     var data = {
         CustomerId: Id,
@@ -51,9 +50,8 @@ const Register = async (Id) => {
         Email: $('#txtemail').val(),
         Password: $('#txtpassword').val(),
         Address: $('#txtaddress').val(),
-        PhoneNo: $('#txtnumber').val()
+        PhoneNo: $('#txtphoneno').val()
     }
-    if (frmname.valid() === true) {
         console.log('data', data);
         alert("OKKK");
         $.ajax({
@@ -76,7 +74,7 @@ const Register = async (Id) => {
             }
         });
 
-    }
+    
 }
 
 

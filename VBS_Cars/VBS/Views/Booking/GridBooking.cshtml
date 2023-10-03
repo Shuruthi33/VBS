@@ -1,20 +1,16 @@
 ﻿<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
-<div class="form-footer">
-    <button class ="mb-1 btn vimeo" asp-controller="Booking" asp-action="AddBooking">Add Customer</button>
+<div class="col-md-12">
+    <a href="AddBooking" class="mb-1 btn vimeo" style="float:right">Add Booking</a>
 </div>
 <div class="row">
-<div class="card-body">
+<div class="card-body" >
     <h4 class="header-title">Booking Details</h4>
-        <div class="col-md-12">
-            <a href="SaveOrUpdateBooking" class="btn btn-primary" style="float:right">Add Vehicle</a>
-        </div>
     <div class="single-table">
         <div class="table-responsive">
-            <table class ="table table-bordered">
+                <table class="table table-bordered" id="tblBooking">
                 <thead class="text-uppercase">
                     <tr>
                         <th scope="col">Customer Name</th>
-                        
                         <th scope="col">Make</th>
                         <th scope="col">Model</th>
                         <th scope="col">Year</th>
@@ -29,6 +25,24 @@
     </div>
 </div>
 </div>
+<script src="~/assets/plugins/jquery/jquery.min.js"></script>
+<script src="~/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/plugins/simplebar/simplebar.min.js"></script>
+<script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
+
+<script src="~/assets/plugins/apexcharts/apexcharts.js"></script>
+
+<script src="~/assets/plugins/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
+
+<script src="~/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
+<script src="~/assets/plugins/jvectormap/jquery-jvectormap-world-mill.js"></script>
+<script src="~/assets/plugins/jvectormap/jquery-jvectormap-us-aea.js"></script>
+
+<script src="~/assets/plugins/daterangepicker/moment.min.js"></script>
+<script src="~/assets/plugins/daterangepicker/daterangepicker.js"></script>
+
+<script src="~/assets/plugins/jquery/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="~/assets/js/vbs/booking.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script>

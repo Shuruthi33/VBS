@@ -1,40 +1,46 @@
-﻿<h4 class="header-title">Booking Information</h4>
-<form id="frmBooking">
-    <input type="hidden" id="hdnBookingId" value="@ViewBag.BookingId" />
-    <div class="form-group">
-        <label for="customerId">Customer Name</label>
-        <input type="text" class="form-control" id="customerId" placeholder="Enter Customer ID">
-    </div>
-    <div class="form-group">
-        <label for="vehicleId">Vehicle Name</label>
-        <input type="text" class="form-control" id="vehicleId" placeholder="Enter Vehicle ID">
-    </div>
-    <div class="form-group">
-        <label for="bookingDate">Booking Date</label>
-        <input type="date" class="form-control" id="bookingDate">
-    </div>
-    <div class="form-group">
-        <label for="deliveryDate">Delivery Date</label>
-        <input type="date" class="form-control" id="deliveryDate">
-    </div>
-    <div class="form-group">
-        <label for="cancelBooking">Cancel Booking</label>
-        <input type="checkbox" class="form-control" id="cancelBooking">
-    </div>
-    <div class="form-group">
-        <label for="returnStatus">Return Status</label>
-        <input type="text" class="form-control" id="returnStatus" placeholder="Enter Return Status">
-    </div>
-    <div class="form-footer">
-        <button type="button" onclick="SaveOrUpdateBooking()">Submit</button>
-    </div>
-</form>
+﻿<div class="container">
+    <h4 class="header-title">Booking Information</h4>
+    <form id="frmBooking">
+        <input type="hidden" id="hdnBookingId" value="@ViewBag.BookingId" />
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="customerId">Customer Name</label>
+                <input type="text" class="form-control" id="customerId" placeholder="Enter Customer ID">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="vehicleId">Vehicle Name</label>
+                <input type="text" class="form-control" id="vehicleId" placeholder="Enter Vehicle ID">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="bookingDate">Booking Date</label>
+                <input type="date" class="form-control" id="bookingDate">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="deliveryDate">Delivery Date</label>
+                <input type="date" class="form-control" id="deliveryDate">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="cancelBooking">Cancel Booking</label>
+                <input type="checkbox" class="form-control" id="cancelBooking">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="returnStatus">Return Status</label>
+                <input type="text" class="form-control" id="returnStatus" placeholder="Enter Return Status">
+            </div>
+        <div class="form-footer">
+                <button type="button" class="btn btn-success" onclick="SaveOrUpdateBooking()">Submit</button>
+        </div>
+        </div>
+    </form>
+</div>
+
 <script src="~/assets/js/vbs/booking.js"></script>
 <script>
     $(document).ready(function () {
-        if (@ViewBag.BookingId> 0) {
+        if (@ViewBag.BookingId > 0) {
             SaveOrUpdateBooking(@ViewBag.BookingId);
         }
     });
 </script>
-

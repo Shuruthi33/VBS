@@ -28,8 +28,8 @@
                         });
                         console.log(tbodydata);
 
-                        $("#tblCandidates tbody").empty();
-                        $("#tblCandidates tbody").append(tbodydata);
+                        $("#tblBooking tbody").empty();
+                        $("#tblBooking tbody").append(tbodydata);
                     }
                 }
             }
@@ -57,7 +57,7 @@ const GetBookingDetailsById = async (Id) => {
             success: function (data) {
 
                 if (data != null && data.statusCode == 200) {
-                    $('#hdnUserId').val(data.resultData.UserId);
+                    $('#hdnBookingId').val(data.resultData.bookingIdId);
                     $('#customerName').val(data.resultData.customerName);
                     $('#make').val(data.resultData.make);
                     $('#model').val(data.resultData.model);

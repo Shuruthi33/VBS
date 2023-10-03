@@ -23,6 +23,11 @@ namespace VBS.Controllers
         {
             return View();
         }
+
+        public IActionResult ViewVehicle()
+        {
+            return View();
+        }
     }
 }
 

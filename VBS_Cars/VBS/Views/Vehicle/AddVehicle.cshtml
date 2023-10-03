@@ -1,183 +1,169 @@
-﻿<h4 class="header-title">Vehicle Information</h4>
+﻿
+<div class="container">
+    <h4 class="header-title">Vehicle Information</h4>
     <form id="frmVehicle">
         <input type="hidden" id="hdnVehicleId" value="@ViewBag.VehicleId" />
-    <div><label for="carMakeDropdown" class="col-form-label" id="errmsg"></label></div>
-    <!-- Make -->
-    <div class="form-group">
-            <label for="carMakeDropdown">Car Make</label>
-        <select class="form-control rounded-0" id="carMakeDropdown">
-            <option value="toyota">Select</option>
-            <option value="toyota">Toyota</option>
-          </select>
-    </div>
-    <!-- Model -->
-    <div class="form-group">
-            <label for="carModel">Car Model</label>
-        <select class="form-control rounded-0" id="carModel">
-            <option value="camry">Select</option>
-            <option value="camry">Camry</option>
-            <option value="corolla">Corolla</option>
-            <option value="rav4">RAV4</option>
-            <option value="highlander">Highlander</option>
-            <option value="sienna">Sienna</option>
-            <option value="tacoma">Tacoma</option>
-            <option value="tundra">Tundra</option>
-            <option value="4runner">4Runner</option>
-            <option value="prius">Prius</option>
-            <!-- Add more Toyota models as needed -->
-        </select>
-    </div>
 
-    <!-- Year -->
-    <div class="form-group">
-            <label for="year">Year</label>
-        <input class="form-control rounded-0" type="number" id="year">
-    </div>
+        <!-- Row 1 -->
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="carMakeDropdown">Car Make</label>
+                <select class="form-control rounded-0" id="carMakeDropdown">
+                    <option value="toyota">Select</option>
+                    <option value="toyota">Toyota</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="carModel">Car Model</label>
+                <select class="form-control rounded-0" id="carModel">
+                    <option value="camry">Select</option>
+                    <option value="camry">Camry</option>
+                    <option value="corolla">Corolla</option>
+                    <option value="rav4">RAV4</option>
+                    <option value="highlander">Highlander</option>
+                    <option value="sienna">Sienna</option>
+                    <option value="tacoma">Tacoma</option>
+                    <option value="tundra">Tundra</option>
+                    <option value="4runner">4Runner</option>
+                    <option value="prius">Prius</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="year">Year</label>
+                <input class="form-control rounded-0" type="number" id="year">
+            </div>
+        </div>
 
-    <!-- Price -->
-    <div class="form-group">
-            <label for="price">Price</label>
-        <input class="form-control rounded-0" type="number" id="price">
-    </div>
+        <!-- Row 2 -->
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="price">Price</label>
+                <input class="form-control rounded-0" type="number" id="price">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="mileage">Mileage</label>
+                <input class="form-control rounded-0" type="number" id="mileage">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="licensePlate">License Plate</label>
+                <input class="form-control rounded-0" type="text" id="licensePlate">
+            </div>
+        </div>
 
-    <!-- Mileage -->
-    <div class="form-group">
-            <label for="mileage">Mileage</label>
-        <input class="form-control rounded-0" type="number" id="mileage">
-    </div>
+        <!-- Row 3 -->
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="colour">Colour</label>
+                <select class="form-control rounded-0" id="colour">
+                    <option value="red">Select</option>
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
+                    <option value="black">Black</option>
+                    <option value="white">White</option>
+                    <option value="silver">Silver</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="vin">VIN</label>
+                <input class="form-control rounded-0" type="text" id="vin">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="engineType">Engine Type</label>
+                <input class="form-control rounded-0" type="text" id="engineType">
+            </div>
+        </div>
 
-    <!-- License Plate -->
-    <div class="form-group">
-            <label for="licensePlate">License Plate</label>
-        <input class="form-control rounded-0" type="text" id="licensePlate">
-    </div>
+        <!-- Row 4 -->
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="engineSize">Engine Size</label>
+                <input class="form-control rounded-0" type="number" id="engineSize">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleFormControlFile1">Example file input</label>
+                <input type="file" class="form-control rounded-0-file" id="exampleFormControlFile1">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="fuelTank">Fuel Tank</label>
+                <input class="form-control rounded-0" type="number" id="fuelTank">
+            </div>
+        </div>
 
-    <!-- Colour -->
-    <div class="form-group">
-            <label for="colour">Colour</label>
-        <select class="form-control rounded-0" id="colour">
-            <option value="red">Select</option>
-            <option value="red">Red</option>
-            <option value="blue">Blue</option>
-            <option value="black">Black</option>
-            <option value="white">White</option>
-            <option value="silver">Silver</option>
-        </select>
-    </div>
-
-    <!-- VIN -->
-    <div class="form-group">
-            <label for="vin">VIN</label>
-        <input class="form-control rounded-0" type="text" id="vin">
-    </div>
-
-    <!-- Engine Type -->
-    <div class="form-group">
-            <label for="engineType">Engine Type</label>
-        <input class="form-control rounded-0" type="text" id="engineType">
-    </div>
-
-    <!-- Engine Size -->
-    <div class="form-group">
-            <label for="engineSize">Engine Size</label>
-        <input class="form-control rounded-0" type="number" id="engineSize">
-    </div>
-
-   
-    <!-- Image e -->
+        <!-- Row 5 -->
         <div class="form-group">
-            <label for="exampleFormControlFile1">Example file input</label>
-            <input type="file" class="form-control rounded-0-file" id="exampleFormControlFile1">
+            <label for="fuelTypeDropdown">Fuel Type</label>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="customRadio1" name="fuelType" class="custom-control-input" value="petrol">
+                <label class="custom-control-label" for="customRadio1">Petrol</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="customRadio2" name="fuelType" class="custom-control-input" value="diesel">
+                <label class="custom-control-label" for="customRadio2">Diesel</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="customRadio3" name="fuelType" class="custom-control-input" value="electric">
+                <label class="custom-control-label" for="customRadio3">Electric</label>
+            </div>
         </div>
-    <!-- Fuel Type -->
-    <div class="form-group">
-        <label for="fuelType">Fuel Tank </label>
-        <input class="form-control rounded-0" type="number" id="fuelTank">
-    </div>
 
-    <!-- Fuel Tank -->
-    <div class="form-group">
-        <label for="fuelTypeDropdown">Fuel Type</label>
-        <div class="custom-control custom-radio">
-            <input type="radio" id="customRadio1" name="fuelType" class="custom-control-input" value="petrol">
-            <label class="custom-control-label" for="customRadio1">Petrol</label>
-        </div>
-        <div class="custom-control custom-radio">
-            <input type="radio" id="customRadio2" name="fuelType" class="custom-control-input" value="diesel">
-            <label class="custom-control-label" for="customRadio2">Diesel</label>
-        </div>
-        <div class="custom-control custom-radio">
-            <input type="radio" id="customRadio3" name="fuelType" class="custom-control-input" value="electric">
-            <label class="custom-control-label" for="customRadio3">Electric</label>
-        </div>
-    </div>
-
-        <!-- Seating Capacity -->
-
-        <label for="seatingCapacity">Seating Capacity</label>
+        <div class="form-group col-md-4">
+            <label for="seatingCapacity">Seating Capacity</label>
             <select class="form-control rounded-0" id="seatingCapacity">
                 <option value="petrol">Select</option>
                 <option value="diesel">4</option>
                 <option value="electric">6</option>
                 <option value="electric">8</option>
-
             </select>
-
-        <!-- Condition -->
-        <div class="form-group">
+        </div>
+        <div class="form-group col-md-4">
             <label for="condition">Condition</label>
             <input class="form-control rounded-0" type="text" id="condition">
         </div>
 
-        <!-- Features -->
-        <div class="form-group">
+
+
+        <div class="form-group col-md-4">
             <label for="features">Features</label>
             <input class="form-control rounded-0" type="text" id="features">
         </div>
-
-        <!-- Version Name -->
-        <div class="form-group">
+        <div class="form-group col-md-4">
             <label for="versionName">Version Name</label>
             <input class="form-control rounded-0" type="text" id="versionName">
         </div>
-
-        <!-- Ex-Showroom Price -->
-        <div class="form-group">
+        <div class="form-group col-md-4">
             <label for="exShowroomPrice">Ex-Showroom Price</label>
             <input class="form-control rounded-0" type="number" id="exShowroomPrice">
         </div>
 
-        <!-- RTO -->
-        <div class="form-group">
+
+        <div class="form-group col-md-4">
             <label for="rto">RTO</label>
             <input class="form-control rounded-0" type="number" id="rto">
         </div>
-
-        <!-- Insurance -->
-        <div class="form-group">
+        <div class="form-group col-md-4">
             <label for="insurance">Insurance</label>
             <input class="form-control rounded-0" type="number" id="insurance">
         </div>
-
-        <!-- Availability -->
-        <div class="form-group">
+        <div class="form-group col-md-4">
             <label for="availability">Availability</label>
             <input class="form-control rounded-0" type="text" id="availability">
+
         </div>
 
-    <div class="form-group">
-            <Button type="submit" class="btn btn-secondary btn-pill" onclick="AddVehicleDetails()">Submit</Button>
+        <!-- Submit Button -->
+        <div class="form-group">
+            <button type="submit" class="btn btn-secondary btn-pill" onclick="AddVehicleDetails()">Submit</button>
         </div>
-        </form>
+    </form>
+</div>
 <script>
     $(document).ready(function () {
-
-        if (@ViewBag.VehicleId> 0) {
+        if (@ViewBag.VehicleId > 0) {
             GetCustomerDetailsById(@ViewBag.VehicleId);
         }
     });
-
 </script>
+
 
 
 
