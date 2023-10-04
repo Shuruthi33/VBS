@@ -127,7 +127,6 @@ namespace VBS.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
             app.UseHttpsRedirection();
 
             app.UseAuthentication();

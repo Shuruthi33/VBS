@@ -3,6 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+/***********************************************************************************************************
+ * Created by       : Shuruthi
+ * Created On       : 09/22/2023
+ *
+ * Reviewed By      :
+ * Reviewed On      :
+ *
+ * Purpose          : Common to use to Auth api controller
+ ***********************************************************************************************************/
+
 
 namespace VBS.Framework.Helper
 {

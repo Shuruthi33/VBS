@@ -1,5 +1,7 @@
 ﻿using System.Security.Cryptography;
 
+
+
 namespace VBS.Framework.Helper
 {
 	public static class HashEncryption

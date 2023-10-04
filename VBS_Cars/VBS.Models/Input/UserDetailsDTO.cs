@@ -17,7 +17,7 @@ namespace VBS.Models.Input
 
     public class UserDetailsDTO
     {
-        public int? CustomerId { get; set; } 
+        public Int32? CustomerId { get; set; } 
         public string? CustomerName { get; set; }
         public string? Password { get; set; }
         public string? Email { get; set; }

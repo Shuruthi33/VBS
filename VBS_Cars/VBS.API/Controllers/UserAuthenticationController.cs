@@ -11,6 +11,18 @@ using VBS.Models;
 using VBS.Models.Input;
 using VBS.Models.Output;
 using VBS.Service.Interface;
+/***********************************************************************************************************
+ * Created by       : Shuruthi
+ * Created On       : 09/22/2023
+ *
+ * Reviewed By      :
+ * Reviewed On      :
+ *
+ * Purpose          : This controller manages user authentication for the API. It handles requests to authenticate
+ *                    users based on provided credentials. Upon successful authentication, it generates a JWT token
+ *                    for further secure communication.
+ ***********************************************************************************************************/
+
 
 namespace VBS.API.Controllers
 {

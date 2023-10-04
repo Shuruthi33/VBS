@@ -37,8 +37,8 @@
                     <div class="card card-default mb-0">
                         <div class="card-header pb-0">
                             <div class="app-brand w-100 d-flex justify-content-center border-bottom-0">
-                                
-                                    <span class="brand-name text-dark">Welcom to VBS</span>
+
+                                <span class="brand-name text-dark">Welcom to VBS</span>
                             </div>
                         </div>
                         <div class="card-body px-5 pb-5 pt-0">
@@ -65,7 +65,7 @@
                                     <div class="form-group col-md-12 ">
                                         <label for="address">PhoneNo</label>
                                         <input type="text" class="form-control rounded-0 input-lg" id="txtphoneno" name="phoneNo" placeholder="PhoneNo">
-                                    </div> 
+                                    </div>
                                     <div class="col-md-12">
                                         <div class="d-flex justify-content-between mb-3">
 
@@ -76,23 +76,48 @@
 
                                         </div>
 
-                                        <button type="submit" class="btn btn-primary btn-pill mb-4" onclick="Register()">Sign Up</button>
+                                        <button type="button" class="btn btn-primary btn-pill mb-4" onclick="Register()">Sign Up</button>
 
-                                        <div class="custom-control" >
+                                        <div class="custom-control">
                                             Already have an account?
                                             <a class="small" href="/Login">Sign In!</a>
                                         </div>
                                     </div>
                                 </div>
                             </form>
-                         </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="~/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/plugins/simplebar/simplebar.min.js"></script>
+    <script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
+
+    <script src="~/assets/plugins/apexcharts/apexcharts.js"></script>
+
+    <script src="~/assets/plugins/datatables/datatables-1.10.18/js/jquery.datatables.min.js"></script>
+
+    <script src="~/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
+    <script src="~/assets/plugins/jvectormap/jquery-jvectormap-world-mill.js"></script>
+    <script src="~/assets/plugins/jvectormap/jquery-jvectormap-us-aea.js"></script>
+
+    <script src="~/assets/plugins/daterangepicker/moment.min.js"></script>
+    <script src="~/assets/plugins/daterangepicker/daterangepicker.js"></script>
+
     <script src="~/assets/js/vbs/login.js"></script>
-     <!-- Include jQuery -->
+    <a href="~/assets/css/style.css.map">~/assets/css/style.css.map</a>
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+
+    <script src="~/assets/plugins/jquery/jquery.min.js"></script>
+
+    <script src="~/assets/js/vbs/login.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+    <!-- ... (your HTML code) ... -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 
     <script>
@@ -124,36 +149,36 @@
                     }
                 },
                 messages: {
-                    txtuserName: {
+                    username: {
                         required: "Please enter a username",
                         minlength: "Username must consist of at least 2 characters"
                     },
-                    txtemail: {
+                    email: {
                         required: "Please enter an email address",
                         email: "Please enter a valid email address"
                     },
-                    txtpassword: {
+                    password: {
                         required: "Please enter a password",
-                        minlength: "Password must be at least 5 characters long"
+                        minlength: "Password must be at least 6 characters long"
                     },
-                    txtaddress: {
+                    address: {
                         required: "Please enter an address"
                     },
-                    txtphoneno: {
+                    phoneno: {
                         required: "Please enter a phone number",
                         digits: "Please enter only digits",
                         minlength: "Phone number must be at least 10 digits long"
                     },
-                    customCheck2: {
+                    cscheck: {
                         required: "You must agree to the terms and conditions"
                     }
                 },
-              
+                submitHandler: function (form) {
+                    Register();
+                }
             });
         });
-
     </script>
-   
 </body>
 </html>
 

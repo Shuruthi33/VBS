@@ -72,36 +72,13 @@ const GetCustomerDetailsById = async (Id) => {
     return Response;
 }
 
-function AddOrUpdateCustomer() {
+const AddOrUpdateCustomer = async () => {
+    var Response = 0;
+    debugger;
+/*    let frmname = $("#frmRegister");*/
     
-    //var formData = new FormData();
-    //formData.append('customerId', $('#hdnCustomerId').val());
-    //formData.append('customerName', $('#name').val());
-    //formData.append('email', $('#email').val());
-    //formData.append('address', $('#address').val());
-    //formData.append('phoneNo', $('#phoneNo').val()); 
-
-    //var imageFile = $('#image')[0].files[0];
-    //formData.append('imagePath', imageFile);
-    //console.log(formData); 
-    //$.ajax({
-    //    type: 'POST',
-    //    url: "https://localhost:7011/api/User/SaveUserDetailsAsync",
-    //    data: JSON.stringify(formData), // Assuming formData is a JSON object
-    //    contentType: 'application/json', // Set content type to JSON
-    //    success: function (data) {
-    //        alert("Save success");
-    //        if (data != null && data.statusCode == 200) {
-    //            window.location.href = "/Customer/GridCustomer";
-    //        }
-    //    },
-    //    error: function (xhr, status, error) {
-    //        console.error(xhr.responseText);
-    //        alert("Error: " + status);
-    //    }
-    //});
-    //var imageFile = $('#image')[0].files[0];
-    var userDetails = {
+    var userDetails =
+    {
         customerId: $('#hdnCustomerId').val(),
         customerName: $('#name').val(),
         email: $('#email').val(),
@@ -109,26 +86,27 @@ function AddOrUpdateCustomer() {
         phoneNo: $('#phoneNo').val(),
         imagePath: ""// Assuming this is a string path to the image
     };
+  /*  if (frmname.valid() === true) {*/
 
-    $.ajax({
-        type: 'POST',
-        url: "https://localhost:7011/api/User/SaveUserDetailsAsync",
-        data: JSON.stringify(userDetails),
-        contentType: 'application/json',
-        success: function (data) {
-            console.log(data);
-            if (data != null && data.statusCode == 200) {
-                alert("Save success");
-                window.location.href = "/Customer/GridCustomer";
+        $.ajax({
+            type: 'POST',
+            url: "https://localhost:7011/api/User/SaveUserDetailsAsync",
+            data: JSON.stringify(userDetails),
+            contentType: 'application/json',
+            success: function (data) {
+                console.log(data);
+                if (data != null && data.statusCode == 200) {
+                    alert("Save success");
+                    window.location.href = "/Customer/GridCustomer";
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+                alert("Error: " + status);
             }
-        },
-        error: function (xhr, status, error) {
-            console.error(xhr.responseText);
-            alert("Error: " + status);
-        }
-    });
+        });
 
-
+    
 }
 
 

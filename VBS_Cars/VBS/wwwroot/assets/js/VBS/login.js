@@ -1,11 +1,13 @@
 ﻿// Login authentication
 const Login = async () => {
+    debugger;
     var Response = 0;
     let frmname = $("#signin-form");
     var data = {
         customerName: $('#txtusername').val(),
         password: $('#txtpassword').val()
     }
+    alert("okk")
     if (frmname.valid() === true) {
 
         $.ajax({
@@ -17,6 +19,8 @@ const Login = async () => {
             success: function (data) {
              
                 console.log('data', data);
+
+
                 if (data != null) {
 
                     alert("save success");
@@ -38,6 +42,7 @@ const Login = async () => {
 
 const Register = async () => {
     var Response = 0;
+    debugger;
     let frmname = $("#frmRegister");
     var data = {
         CustomerId: 0,
@@ -47,7 +52,9 @@ const Register = async () => {
         Address: $('#txtaddress').val(),
         PhoneNo: $('#txtphoneno').val(),
     }
+    alert("okk")
     if (frmname.valid() === true) {
+
         console.log('data', data);
         $.ajax({
             type: 'POST',
@@ -60,12 +67,13 @@ const Register = async () => {
                 alert("save success")
                 if (data != null && data.statusCode == 200) {
                     alert("Registration Success")
-                    window.location.href = "/Login/Login"; 
+                    window.location.href = "/Login/Login";
 
                 }
             }
         });
     }
+    
 }
 
 

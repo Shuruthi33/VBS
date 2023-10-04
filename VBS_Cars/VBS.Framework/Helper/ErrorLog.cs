@@ -1,9 +1,19 @@
 ﻿namespace VBS.Framework.Helper
+/***********************************************************************************************************
+* Created by       : Shuruthi
+* Created On       : 09/22/2023
+*
+* Reviewed By      :
+* Reviewed On      :
+*
+* Purpose          : It is common error log
+***********************************************************************************************************/
+
 {
-	/// <summary>
-	/// Summary description for ErrorLog new
-	/// </summary>
-	public class ErrorLog : IDisposable
+    /// <summary>
+    /// Summary description for ErrorLog new
+    /// </summary>
+    public class ErrorLog : IDisposable
 	{
 		#region Properties
 

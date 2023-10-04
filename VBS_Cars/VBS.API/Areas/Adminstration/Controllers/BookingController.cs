@@ -5,6 +5,18 @@ using Microsoft.AspNetCore.Mvc;
 using VBS.Framework.Helper;
 using VBS.Models.Input;
 using VBS.Service.Interface;
+/***********************************************************************************************************
+ * Created by       : Shuruthi
+ * Created On       : 09/22/2023
+ *
+ * Reviewed By      :
+ * Reviewed On      :
+ *
+ * Purpose          : This controller manages booking-related operations in the administration area of the API.
+ *                    It handles requests to retrieve booking details, retrieve details by ID, insert new booking
+ *                    details, and delete booking records.
+ ***********************************************************************************************************/
+
 
 namespace VBS.API.Areas.Adminstration.Controllers
 {

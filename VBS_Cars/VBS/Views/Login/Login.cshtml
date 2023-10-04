@@ -44,14 +44,14 @@
 
                             <h4 class="text-dark mb-6 text-center">Sign in </h4>
 
-                            <form id="signin-form">
+                            <form id="signin-form" asp-action="Authenticate" asp-controller="Login">
                                 <div class="row">
                                     <div class="form-group col-md-12 mb-4">
-                                        <input type="text" class="form-control rounded-0 input-lg" id="txtusername" name="txtusername"
+                                        <input type="text" class="form-control rounded-0 input-lg" id="txtusername" name="CustomerName"
                                                placeholder="Enter the UserName">
                                     </div>
                                     <div class="form-group col-md-12 ">
-                                        <input type="password" class="form-control rounded-0 input-lg" id="txtpassword" name="txtpassword"
+                                        <input type="password" class="form-control rounded-0 input-lg" id="txtpassword" name="Password"
                                                placeholder="Enter the Password">
                                     </div>
                                     <div class="col-md-12">
@@ -67,7 +67,7 @@
 
                                         </div>
 
-                                        <button type="button" class="btn btn-primary btn-pill mb-4" onclick="Login()">Sign In</button>
+                                        <button type="submit" class="btn btn-primary btn-pill mb-4" >Sign In</button>
 
                                         <div class="custom-control">
                                             Don't have an account?
@@ -107,18 +107,22 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script>
         $(document).ready(function () {
+            if (ViewBag.message != "" && ViewBag.message != null)
+            {
+                alert(ViewBag.message);
+            }
+        });
+
+        $(document).ready(function () {
             $("#signin-form").validate({
                 rules: {
-                    txtusername: "required",
-                    txtpassword: "required"
+                    CustomerName: "required",
+                    Password: "required"
                 },
                 messages: {
-                    txtusername: "Please enter your username",
-                    txtpassword: "Please enter your password"
+                    CustomerName: "Please enter your username",
+                    Password: "Please enter your password"
                 },
-                submitHandler: function (form) {
-                    Login(); // This is called when the form is valid
-                }
             });
         });
 

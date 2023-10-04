@@ -3,6 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+/***********************************************************************************************************
+ * Created by       : Shuruthi
+ * Created On       : 09/22/2023
+ *
+ * Reviewed By      :
+ * Reviewed On      :
+ *
+ * Purpose          : This class provides constant strings representing stored procedure names for various
+ *                    database operations related to customer, vehicle, booking, and feedback details.
+ *                    It serves as a central repository for storing and referencing these procedure names
+ *                    throughout the application.
+ ***********************************************************************************************************/
 
 namespace VBS.Framework.Helper
 {
