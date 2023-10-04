@@ -116,8 +116,9 @@ function AddOrUpdateCustomer() {
         data: JSON.stringify(userDetails),
         contentType: 'application/json',
         success: function (data) {
-            alert("Save success");
+            console.log(data);
             if (data != null && data.statusCode == 200) {
+                alert("Save success");
                 window.location.href = "/Customer/GridCustomer";
             }
         },

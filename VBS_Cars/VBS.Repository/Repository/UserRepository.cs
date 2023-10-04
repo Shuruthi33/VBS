@@ -78,7 +78,8 @@ namespace VBS.Repository.Repository
             {
                 parameters.Add(DBParameter.UserDetails.CustomerId, userDetailsDTO.CustomerId, DbType.Int16, ParameterDirection.Input);
                 parameters.Add(DBParameter.UserDetails.CustomerName, userDetailsDTO.CustomerName, DbType.String, ParameterDirection.Input);
-                parameters.Add(DBParameter.UserDetails.Password, HashEncryption.HashPassword(userDetailsDTO.Password),DbType.String, ParameterDirection.Input);
+                if (userDetailsDTO.CustomerId == 0)
+                parameters.Add(DBParameter.UserDetails.Password, HashEncryption.HashPassword(userDetailsDTO.Password), DbType.String, ParameterDirection.Input);
                 parameters.Add(DBParameter.UserDetails.Email, userDetailsDTO.Email, DbType.String, ParameterDirection.Input);
                 parameters.Add(DBParameter.UserDetails.Address, userDetailsDTO.Address, DbType.String, ParameterDirection.Input);
                 parameters.Add(DBParameter.UserDetails.PhoneNo, userDetailsDTO.PhoneNo, DbType.String, ParameterDirection.Input);
@@ -94,6 +95,6 @@ namespace VBS.Repository.Repository
             return ReturnValue;
         }
 
-     
+
     }
 }

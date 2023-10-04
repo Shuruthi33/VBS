@@ -39,8 +39,8 @@
 <script src="~/assets/js/vbs/booking.js"></script>
 <script>
     $(document).ready(function () {
-        if (@ViewBag.BookingId > 0) {
-            SaveOrUpdateBooking(@ViewBag.BookingId);
+        if (@ViewBag.VehicleId > 0) {
+            GetVehicleDetailsById(@ViewBag.VehicleId);
         }
     });
 </script>

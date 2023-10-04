@@ -1,59 +1,59 @@
 ﻿<div class="container">
-    <div class="row">
-        <div id="cardContainer">
+    <div class="row" id="cardContainer">
+        <div >
         </div>
     </div>
 </div>
-@*<script src="~/assets/js/vbs/vehicle.js"></script>*@
+<script src="~/assets/js/vbs/vehicle.js"></script>
 <script>
     $(document).ready(function () {
         GetVehicleDetailsForBooking();
     });
 
-    function GetVehicleDetailsForBooking = async () => {
-        debugger;
-        try {
-            var Response = await $.ajax({
-                type: 'GET',
-                url: "https://localhost:7011/api/Vehicle/GetVehicleDetailsAsync",
-                contentType: "application/json",
-                //headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-                data: {},
-                async: false,
-                success: function (data) {
-                    debugger;
-                    if (data != null && data.statusCode == 200) {
-                        if (data.resultData.length > 0) {
-                            var tbodydata = '';
-                            $.each(data.resultData, function (key, value) {
-                                var cardData = '<div class="card mb-4">';
-                                cardData += '<img src="~/assets/images/elements/' + value.make + '.jpeg" />';
-                                cardData += '<div class="card-body">';
-                                cardData += '<h5 class="card-title">' + value.make + ' ' + value.model + '</h5>';
-                                cardData += '<p class="card-text">' + value.description + '</p>';
-                                cardData += '<ul class="list-group list-group-flush">';
-                                cardData += '<li class="list-group-item">Engine: ' + value.engineSize + '</li>';
-                                cardData += '<li class="list-group-item">Transmission: ' + value.transmission + '</li>';
-                                cardData += '<li class="list-group-item">Fuel Type: ' + value.fuelType + '</li>';
-                                cardData += '<li class="list-group-item">Price: $' + value.price + '</li>';
-                                cardData += '</ul>';
-                                cardData += '<a href="/Vehicle/GirdVehicle" class="btn btn-outline-primary btn-pill mt-3"> View More</a>';
-                                cardData += '</div></div>';
+    //function GetVehicleDetailsForBooking = async () => {
+    //    debugger;
+    //    try {
+    //        var Response = await $.ajax({
+    //            type: 'GET',
+    //            url: "https://localhost:7011/api/Vehicle/GetVehicleDetailsAsync",
+    //            contentType: "application/json",
+    //            //headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    //            data: {},
+    //            async: false,
+    //            success: function (data) {
+    //                debugger;
+    //                if (data != null && data.statusCode == 200) {
+    //                    if (data.resultData.length > 0) {
+    //                        var tbodydata = '';
+    //                        $.each(data.resultData, function (key, value) {
+    //                            var cardData = '<div class="card mb-4">';
+    //                            cardData += '<img src="~/assets/images/elements/' + value.make + '.jpeg" />';
+    //                            cardData += '<div class="card-body">';
+    //                            cardData += '<h5 class="card-title">' + value.make + ' ' + value.model + '</h5>';
+    //                            cardData += '<p class="card-text">' + value.description + '</p>';
+    //                            cardData += '<ul class="list-group list-group-flush">';
+    //                            cardData += '<li class="list-group-item">Engine: ' + value.engineSize + '</li>';
+    //                            cardData += '<li class="list-group-item">Transmission: ' + value.transmission + '</li>';
+    //                            cardData += '<li class="list-group-item">Fuel Type: ' + value.fuelType + '</li>';
+    //                            cardData += '<li class="list-group-item">Price: $' + value.price + '</li>';
+    //                            cardData += '</ul>';
+    //                            cardData += '<a href="/Vehicle/GirdVehicle" class="btn btn-outline-primary btn-pill mt-3"> View More</a>';
+    //                            cardData += '</div></div>';
 
-                                $("#cardContainer").append(cardData); // Assuming you have a container with id "cardContainer"
-                            });
+    //                            $("#cardContainer").append(cardData); // Assuming you have a container with id "cardContainer"
+    //                        });
 
-                        }
-                    }
-                }
-            });
+    //                    }
+    //                }
+    //            }
+    //        });
 
-            return Response;
-        } catch (err) {
-            console.log(err);
+    //        return Response;
+    //    } catch (err) {
+    //        console.log(err);
 
-            return Response; // or throw an error
-        }
+    //        return Response; // or throw an error
+    //    }
 </script>
 
 

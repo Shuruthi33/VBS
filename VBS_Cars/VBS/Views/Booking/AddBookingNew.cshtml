@@ -151,22 +151,15 @@
         </div>
 
         <!-- Submit Button -->
-        
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-footer">
-                    <button type="button" class="mb-1 btn btn-success" onclick="AddVehicleDetails()">Save</button>
-                </div>
-            </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-secondary btn-pill" onclick="AddVehicleDetails()">Submit</button>
         </div>
     </form>
 </div>
-
-<script src="~/assets/js/vbs/vehicle.js"></script>
 <script>
     $(document).ready(function () {
         if (@ViewBag.VehicleId > 0) {
-            GetCustomerDetailsById(@ViewBag.VehicleId);
+            GetVehicleDetailsById(@ViewBag.VehicleId);
         }
     });
 </script>

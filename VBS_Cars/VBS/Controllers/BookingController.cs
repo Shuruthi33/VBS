@@ -13,5 +13,11 @@ namespace VBS.Controllers
             ViewBag.BookingId = BookingId;
             return View();
         }
+        
+             public IActionResult AddBookingNew(Int16 BookingId)
+        {
+            ViewBag.BookingId = BookingId;
+            return View();
+        }
     }
 }
