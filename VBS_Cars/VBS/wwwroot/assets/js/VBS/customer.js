@@ -1,6 +1,6 @@
 ﻿const GetCustomerDetails = async () => {
     var Response;
-    debugger;
+    
     try {
         await $.ajax({
             type: 'GET',
@@ -14,7 +14,7 @@
                         var tbodydata = '';
                         $.each(data.resultData, function (key, value) {
                             tbodydata += '<tr>';
-                            tbodydata += '<td> <a href = "/Customer/AddOrUpdateCustomer?CustomerId=' + value.customerId + '"><span class="mdi mdi-border-color" type="button" title="Edit"></span></a><a href = "#"onclick="DeleteCustomerById(' + value.customerId + ')"><span class="mdi mdi-delete-forever" type="button" title="Delete"></span></a></td>';
+                            tbodydata += '<td> <a href = "/Customer/AddOrUpdateCustomer?CustomerId=' + value.customerId + '"> &nbsp <span class="mdi mdi-border-color" type="button" title="Edit"></span></a><a href = "#"onclick="DeleteCustomerById(' + value.customerId + ')"><span class="mdi mdi-delete-forever" type="button" title="Delete"></span></a></td>';
 
                             //tbodydata += '<td>' + value.customerId + '</td>';
                             tbodydata += '<td>' + value.customerName + '</td>';
@@ -38,7 +38,7 @@
 }
 
 const GetCustomerDetailsById = async (Id) => {
-    debugger;
+    
     var Response = 0;
     alert("okk")
     var data = { id : Id };
@@ -50,7 +50,7 @@ const GetCustomerDetailsById = async (Id) => {
             data: JSON.stringify(data),
             async: false,
             success: function (data) {
-                debugger;
+                
                 if (data != null && data.statusCode == 200) {
                     $('#hdnCustomerId').val(data.resultData.customerId);
                     $('#name').val(data.resultData.customerName);
@@ -73,7 +73,7 @@ const GetCustomerDetailsById = async (Id) => {
 }
 
 function AddOrUpdateCustomer() {
-    debugger;
+    
     //var formData = new FormData();
     //formData.append('customerId', $('#hdnCustomerId').val());
     //formData.append('customerName', $('#name').val());

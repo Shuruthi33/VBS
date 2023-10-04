@@ -1,6 +1,6 @@
 ﻿const GetBookingDetails = async () => {
     var Response;
-    debugger;
+    
     alert("okk")
 
     try {

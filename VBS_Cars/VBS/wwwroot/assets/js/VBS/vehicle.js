@@ -164,7 +164,7 @@ const GetVehicleDetailsByIdForBooking = async (Id) => {
             data: { id: Id },
             async: false,
             success: function (data) {
-                debugger;
+                
                 if (data != null && data.statusCode == 200) {
                     $('#hdnVehicleId').val(data.resultData.VehicleId);
                     $('#carMakeDropdown').val(data.resultData.make);
@@ -200,7 +200,7 @@ const GetVehicleDetailsByIdForBooking = async (Id) => {
 }
 
 const AddVehicleDetails = async () => {
-        debugger;
+        
     try {
         var fueltype1;
         if ($("#customRadio1").prop("checked")) {
